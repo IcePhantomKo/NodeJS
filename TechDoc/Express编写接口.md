@@ -122,7 +122,7 @@ cors（Cross-Origin Resource Sharing,跨域资源共享）由一系列HTTP响应
 ```
 res.setHeader('Access-Control-Allow-Origin','http://baidu.com')
 ```
-只百度发来的请求
+只接收百度发来的请求
 
 ```
 res.setHeader('Access-Control-Allow-Origin','*')
