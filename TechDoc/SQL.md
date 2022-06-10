@@ -35,3 +35,16 @@ SELECT * FROM users ORDER BY status DESC
 对 user 表中的数据，先按照 status 进行降序排序，再按照 username 字母的顺序，进行升序的排序
 SELECT * FROM users ORDER BY status DESC, username ASC
 ```
+
+##### COUNT(*)
+用于返回查询结果的总数据条数。
+
+```
+-- 使用 COUNT(*) 来统计 users 表中，状态为 0 用户的总数量
+SELECT COUNT(*) FROM users WHERE status= 0
+```
+
+##### 使用 AS 为列设置别名
+```
+SELECT COUNT(*) AS total FROM users WHERE status = 0
+```
