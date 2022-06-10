@@ -43,8 +43,46 @@ SELECT * FROM users ORDER BY status DESC, username ASC
 -- 使用 COUNT(*) 来统计 users 表中，状态为 0 用户的总数量
 SELECT COUNT(*) FROM users WHERE status= 0
 ```
+##### NodeJS中使用mySQL
+```
+const mysql = require('mysql')
+
+const db = mysql.createPool(
+    {host: '127.0.0.1', user: 'root', password: 'ggat.123', database: 'my_db_01'}
+)
+// 查询users表中所有的数据
+// 注意：如果执行的是 select 查询语句，则执行的结果是数组
+const sqlStr = 'SELECT * FROM users'
+
+db.query(sqlStr,(err,res) =>{
+    if(err) return console.log(err.message);
+    //查询成功
+    console.log(res);
+})
+```
 
 ##### 使用 AS 为列设置别名
 ```
 SELECT COUNT(*) AS total FROM users WHERE status = 0
+```
+
+##### 插入数据
+```
+const mysql = require('mysql')
+
+const db = mysql.createPool(
+    {host: '127.0.0.1', user: 'root', password: 'ggat.123', database: 'my_db_01'}
+)
+// 向users 表中，新增一条数据，其中username的值为spider-man,password为pcc123
+
+const user = {username:'spider-man',password:'pcc123'}
+
+const sqlStr = 'insert into users (username,password) values(?,?)'
+
+db.query(sqlStr,[user.username,user.password],(err,res) =>{
+    if(err) return console.log(err.message);
+    if(res.affectedRows === 1){
+        console.log('插入数据成功');
+    }
+})
 ```
