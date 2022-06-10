@@ -86,3 +86,14 @@ db.query(sqlStr,[user.username,user.password],(err,res) =>{
     }
 })
 ```
+
+##### 插入数据的便捷方式
+向表中新增数据时，如果数据对象的每个属性和数据表的字段一一对应，则可以：
+```
+const user = {username: 'Spider-Man2', password: 'pcc4321'}
+const sqlStr = 'INSERT INTO users SET ?'
+db.query(sqlStr, user, (err, results) => {
+    if(err) return console.log(err.message);
+    if(results.affectedRows === 1 ){console.log('插入数据成功')}
+})
+```
