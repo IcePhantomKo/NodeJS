@@ -129,4 +129,6 @@ res.setHeader('Access-Control-Allow-Origin','*')
 ```
 允许任何域的请求
 
- 
+ ##### CORS 响应头部 -Access-Control-Allow-Methods
+ 默认情况下，CORS 仅支持客户端发起的 GET, POST, HEAD 请求
+如果客户端希望通过 PUT DELETE 等方式请求服务器的资源，则需要在服务器端，通过Access-Control-Allow-Methods来指明实际请求所允许使用的HTTP方法
