@@ -5,10 +5,10 @@
 -- 通过 * 查询表中所有数据
 -- SELECT * FROM my_db_01.users
 
--- 从user 表中把username和password对应的数据查询出来alter
+-- 从user 表中把 username 和 password 对应的数据查询出来alter
 -- SELECT username, password from my_db_01.users
 
--- 向表中插入Tony和密码：098123
+-- 向表中插入 Tony 和密码：098123
 -- INSERT INTO my_db_01.users (username,password) values('Tony','098123')
 -- insert into my_db_01.users (id,username,password) values(1,'zs','123')
 
