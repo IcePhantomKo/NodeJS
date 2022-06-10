@@ -106,7 +106,7 @@ module.exports = router
 ```
 Postman POST请求（选择x-www-form-urlencoded)
 
-## 1.4 CORS相关（跨域问题）
+## 1.4 CORS 相关（跨域问题）
 使用 cors 中间件解决跨域问题
 - 运行 npm install cors 安装中间件
 - 使用 const cors = require('cors') 导入中间件
@@ -132,3 +132,10 @@ res.setHeader('Access-Control-Allow-Origin','*')
  ##### CORS 响应头部 -Access-Control-Allow-Methods
  默认情况下，CORS 仅支持客户端发起的 GET, POST, HEAD 请求
 如果客户端希望通过 PUT DELETE 等方式请求服务器的资源，则需要在服务器端，通过Access-Control-Allow-Methods来指明实际请求所允许使用的HTTP方法
+
+
+
+
+
+
+
