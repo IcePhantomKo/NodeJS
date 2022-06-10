@@ -1,4 +1,5 @@
 # SQL 简单语句
+
 ```
 -- 通过 * 查询表中所有数据
 -- SELECT * FROM my_db_01.users
