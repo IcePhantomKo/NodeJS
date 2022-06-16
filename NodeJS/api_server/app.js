@@ -13,7 +13,7 @@ app.use('/public', express.static('public'));
 app.get('/index.html', function (req, res) {
     res.sendFile( __dirname + "/" + "index.html" );
  })
- 
+
 // 配置解析表单数据的中间件,注意这个中间件智能解析application/x-www-form-urlencoded样式中间件
 app.use(express.urlencoded({extended:false}))
 
@@ -41,6 +41,16 @@ app.use(expressJWT({secret:config.jwtSecretKey,algorithms:['HS256']}).unless({pa
 const userRouter = require('./router/user')
 app.use('/api',userRouter)
 
+app.get('/admin',(req,res) =>{
+    //TODO_05: 使用req.user获取用户信息，并使用data属性将用户信息发送给客户端
+    console.log(req.user);
+    res.send({
+        status:200,
+        message:'用户信息获取成功！',
+        data:req.user,
+    })
+})
+
 const joi = require('joi')
 // 错误中间件
 app.use((err,req,res,next) =>{
@@ -53,6 +63,5 @@ app.use((err,req,res,next) =>{
 })
 
 app.listen(8000,() =>{
-    // console.log('http://127.0.0.1:8000');
     console.log('http://10.110.133.212:8000/index.html');
 })

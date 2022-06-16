@@ -20,7 +20,7 @@ router.post('/reguser',expressJoi(reg_login_schema),userHandler.regUser)
 router.post('/login',expressJoi(reg_login_schema),userHandler.login)
 
 // 测试
-router.post('/test',userHandler.test)
+// router.get('/admin',userHandler.homePage)
 
 // 将路由共享出去
 module.exports = router

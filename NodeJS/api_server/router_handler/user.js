@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken')
 // 导入全局的配置文件
 const config = require('../config')
 // 路由处理函数模块
-
+const fs = require('fs')
 // ************************* 注册新用户的处理函数 ************************************
 
 exports.regUser = (req,res) =>{
@@ -89,8 +89,7 @@ exports.login = (req,res) =>{
     })
 }
 
-// 测试函数
-
-exports.test = (req,res) =>{
-    res.send('test ok')
-}
+// TODO: 主页处理函数
+// exports.homePage = (req,res) =>{
+//     res.send('HomePage ok')
+// }
