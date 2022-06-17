@@ -41,14 +41,15 @@ app.use(expressJWT({secret:config.jwtSecretKey,algorithms:['HS256']}).unless({pa
 const userRouter = require('./router/user')
 app.use('/api',userRouter)
 
-app.get('/admin',(req,res) =>{
+app.get('/admin/homePage',(req,res,next) =>{
     //TODO_05: 使用req.user获取用户信息，并使用data属性将用户信息发送给客户端
-    console.log(req.user);
     res.send({
         status:200,
         message:'用户信息获取成功！',
         data:req.user,
+        Authorization:req.headers.authorization
     })
+    // console.log(req.headers.authorization)
 })
 
 const joi = require('joi')
@@ -63,5 +64,5 @@ app.use((err,req,res,next) =>{
 })
 
 app.listen(8000,() =>{
-    console.log('http://10.110.133.212:8000/index.html');
+    console.log('运行在 http://10.110.133.212:8000/index.html');
 })

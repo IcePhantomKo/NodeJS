@@ -6,8 +6,8 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 // 导入全局的配置文件
 const config = require('../config')
-// 路由处理函数模块
-const fs = require('fs')
+// url 模块导入
+const url = require('url')
 // ************************* 注册新用户的处理函数 ************************************
 
 exports.regUser = (req,res) =>{
