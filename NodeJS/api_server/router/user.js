@@ -6,7 +6,7 @@ const router = express.Router()
 
 // 导入用户路由处理函数对应的模块
 const userHandler = require('../router_handler/user')
-
+ 
 // 导入验证表单那数据的中间件
 const expressJoi = require('@escook/express-joi')
 
@@ -19,8 +19,7 @@ router.post('/reguser',expressJoi(reg_login_schema),userHandler.regUser)
 // 登录
 router.post('/login',expressJoi(reg_login_schema),userHandler.login)
 
-// 跳转页面
-// router.get('/admin',userHandler.homePage)
+// 主页跳转
 
 // 将路由共享出去
 module.exports = router

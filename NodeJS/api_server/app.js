@@ -41,16 +41,19 @@ app.use(expressJWT({secret:config.jwtSecretKey,algorithms:['HS256']}).unless({pa
 const userRouter = require('./router/user')
 app.use('/api',userRouter)
 
-app.get('/admin/homePage',(req,res,next) =>{
-    //TODO_05: 使用req.user获取用户信息，并使用data属性将用户信息发送给客户端
-    res.send({
-        status:200,
-        message:'用户信息获取成功！',
-        data:req.user,
-        Authorization:req.headers.authorization
-    })
-    // console.log(req.headers.authorization)
-})
+const adRouter = require('./router/admin')
+app.use('/admin',adRouter)
+
+// app.get('/admin/homePage',(req,res,next) =>{
+//     //TODO_05: 使用req.user获取用户信息，并使用data属性将用户信息发送给客户端
+//     res.send({
+//         status:200,
+//         message:'用户信息获取成功！',
+//         data:req.user,
+//         Authorization:req.headers.authorization
+//     })
+//     // console.log(req.headers.authorization)
+// })
 
 const joi = require('joi')
 // 错误中间件

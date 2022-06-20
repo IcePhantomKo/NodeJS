@@ -34,29 +34,29 @@ $('#logBtn').click(() => {
             alert('错误的用户信息')
         }
     }),
-    // $.get(my_ip + "/admin/homePage", {
-    //     // authorization: window.localStorage.getItem("token")
-    //     }, (data, status) => {
-    //         if (data.status == 200) {
-    //         location.href = 'http://10.110.133.212:8000/homePage.html'
-    //     } else {
-    //         console.log(data);
-    //     }
-    // })
-    // location.href = 'http://10.110.133.212:8000/homePage.html'
-    $.ajax({
-        url: my_ip + "/admin/homePage",
-        method: "GET",
-        headers: {Authorization: window.localStorage.getItem("token")},
-        success:(data,status) =>{
-            if(data.status == 200){
-                console.log(data);
-                // location.href = 'http://10.110.133.212:8000/homePage.html'
-            }else{
-                console.log(data);
-            }
+    $.get(my_ip + "/admin/homePage", {
+        // authorization: window.localStorage.getItem("token")
+        }, (data, status) => {
+            if (data.status == 200) {
+            location.href = 'http://10.110.133.212:8000/homePage.html'
+        } else {
+            console.log(data);
         }
     })
+    // location.href = 'http://10.110.133.212:8000/homePage.html'
+    // $.ajax({
+    //     url: my_ip + "/admin/homePage",
+    //     method: "GET",
+    //     headers: {Authorization: window.localStorage.getItem("token")},
+    //     success:(data,status) =>{
+    //         if(data.status == 200){
+    //             console.log(data);
+    //             location.href = 'http://10.110.133.212:8000/homePage.html'
+    //         }else{
+    //             console.log(data);
+    //         }
+    //     }
+    // })
     
 })
 
