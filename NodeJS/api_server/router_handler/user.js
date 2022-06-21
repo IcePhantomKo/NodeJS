@@ -6,15 +6,13 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 // 导入全局的配置文件
 const config = require('../config')
+const path = require('path')
 
 // ************************* 注册新用户的处理函数 ************************************
 exports.regUser = (req,res) =>{
     // 获取客户端提交到服务器的用户信息
     const userinfo = req.body
     // 对表单中的数据，进行合法性的校验
-    // if(!userinfo.username || !userinfo.password){
-    //     return res.send({status:1,message:'用户名或密码不合法!'})
-    // }
 
     // 定义sql语句，查询用户是否被占用
     const sqlStr = 'select * from ev_users where username=?'
@@ -85,9 +83,5 @@ exports.login = (req,res) =>{
         })
         console.log('登录成功');
     })
+    // res.sendFile(path.resolve(__dirname,"../homePage.html"));
 }
-
-// TODO: 主页处理函数
-// exports.homePage = (req,res) =>{
-//     res.send('HomePage ok')
-// }

@@ -44,23 +44,13 @@ app.use('/api',userRouter)
 const adRouter = require('./router/admin')
 app.use('/admin',adRouter)
 
-// app.get('/admin/homePage',(req,res,next) =>{
-//     //TODO_05: 使用req.user获取用户信息，并使用data属性将用户信息发送给客户端
-//     res.send({
-//         status:200,
-//         message:'用户信息获取成功！',
-//         data:req.user,
-//         Authorization:req.headers.authorization
-//     })
-//     // console.log(req.headers.authorization)
-// })
-
 const joi = require('joi')
 // 错误中间件
 app.use((err,req,res,next) =>{
     // 验证数据失败
     if(err instanceof joi.ValidationError) return res.cc(err)
     // 身份认证失败后的错误
+    // console.log(req.headers);
     if(err.name === 'UnauthorizedError') return res.cc('身份认证失败')
     // 未知错误
     res.cc(err)
