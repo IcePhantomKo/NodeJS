@@ -19,7 +19,5 @@ router.post('/reguser',expressJoi(reg_login_schema),userHandler.regUser)
 // 登录
 router.post('/login',expressJoi(reg_login_schema),userHandler.login)
 
-// 主页跳转
-
 // 将路由共享出去
 module.exports = router

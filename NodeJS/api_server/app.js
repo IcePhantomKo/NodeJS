@@ -51,7 +51,7 @@ app.use((err,req,res,next) =>{
     if(err instanceof joi.ValidationError) return res.cc(err)
     // 身份认证失败后的错误
     // console.log(req.headers);
-    if(err.name === 'UnauthorizedError') return res.cc('身份认证失败')
+    if(err.name === 'UnauthorizedError') return res.cc('身份认证失败啦')
     // 未知错误
     res.cc(err)
 })
