@@ -6,9 +6,11 @@ const adRouter = express.Router()
 
 // 导入用户路由处理函数对应的模块
 const adminHandler = require('../router_handler/admin')
+// 导入token验证
+const tokenAuth = require('../middleware/tokenAuth')
 
 //跳转主页
-adRouter.get('/homePage',adminHandler.login)
+adRouter.get('/homePage',tokenAuth,adminHandler.login)
 
 // 将路由共享出去
 module.exports = adRouter

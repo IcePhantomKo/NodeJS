@@ -5,6 +5,10 @@ const app = express()
 
 // 导入并配置cors中间件
 const cors = require('cors')
+// 导入cookieParser
+const cookieParser = require('cookie-parser')
+
+app.use(cookieParser())
 
 app.use(cors())
 
@@ -51,7 +55,7 @@ app.use((err,req,res,next) =>{
     if(err instanceof joi.ValidationError) return res.cc(err)
     // 身份认证失败后的错误
     // console.log(req.headers);
-    if(err.name === 'UnauthorizedError') return res.cc('身份认证失败啦')
+    if(err.name === 'UnauthorizedError') return res.cc('身份认证失败')
     // 未知错误
     res.cc(err)
 })

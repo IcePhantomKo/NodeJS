@@ -6,7 +6,6 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 // 导入全局的配置文件
 const config = require('../config')
-const path = require('path')
 
 // ************************* 注册新用户的处理函数 ************************************
 exports.regUser = (req,res) =>{
@@ -75,11 +74,15 @@ exports.login = (req,res) =>{
         // 对用户的信息进行加密，生成Token字符串
         const tokenStr = jwt.sign(user, config.jwtSecretKey,{expiresIn: config.expiresIn})
 
+        res.cookie("token", tokenStr,{
+            httpOnly:true
+        })
+
         // 调用res.send()响应给客户端
         res.send({
             status:0,
             message:'登录成功',
-            token: 'Bearer ' + tokenStr
+            token: 'Bearer ' + tokenStr,
         })
         console.log('登录成功');
     })
