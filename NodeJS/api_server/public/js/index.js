@@ -10,22 +10,23 @@ function loginBtn(){
     }, (data, status) => {
         if (data.status == 0) {
             alert('登录成功')
-            // $.ajax({
-            //     url: my_ip + "/admin/homePage",
-            //     method: "GET",
-            //     Headers: {
-            //         'Content-Type':'application/json;charset = utf8',
-            //         'Authorization': data.token
-            //     }
-            //  },(data,status) =>{
-            //      console.log(data);
-            //  })
+
             $.get(my_ip + '/admin/homePage',{
-                Headers:data.token
-            })
-            //  location.href = 'http://10.110.133.212:8000/public/test.html'
-             location.href = 'http://10.110.133.212:8000/homePage.html'
-        } else {
+                headers:{
+                    Accept: "application/json; charset=utf-8",
+                    authorization: data.token
+                }
+            }) 
+            // location.href = 'http://10.110.133.212:8000/homePage.html'
+            // $.ajax({
+            //     type:'post',
+            //     url: my_ip + '/admin/homePage',
+            //     headers:{
+            //         "Content-Type":"text/plain;charset=UTF-8",
+            //         "Authorization":data.token
+            //     }
+            // })           
+        }else {
             alert('错误的用户信息')
         }
     })
