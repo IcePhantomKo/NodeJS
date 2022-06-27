@@ -7,6 +7,7 @@ const app = express()
 const cors = require('cors')
 // 导入cookieParser
 const cookieParser = require('cookie-parser')
+const tokenAuth = require('../api_server/middleware/tokenAuth')
 
 app.use(cookieParser())
 
@@ -17,6 +18,10 @@ app.use('/public', express.static('public'));
 app.get('/index.html', function (req, res) {
     res.sendFile( __dirname + "/" + "index.html" );
  })
+ 
+app.get('/homePage.html',tokenAuth,function(req,res){
+    res.sendFile(__dirname + "/" + "homePage.html")
+})
 
 // 配置解析表单数据的中间件,注意这个中间件智能解析application/x-www-form-urlencoded样式中间件
 app.use(express.urlencoded({extended:false}))
@@ -45,20 +50,19 @@ app.use(expressJWT({secret:config.jwtSecretKey,algorithms:['HS256']}).unless({pa
 const userRouter = require('./router/user')
 app.use('/api',userRouter)
 
-const adRouter = require('./router/admin')
-app.use('/admin',adRouter)
-
 const joi = require('joi')
 // 错误中间件
 app.use((err,req,res,next) =>{
     // 验证数据失败
     if(err instanceof joi.ValidationError) return res.cc(err)
     // 身份认证失败后的错误
-    // console.log(req.headers);
-    if(err.name === 'UnauthorizedError') return res.cc('身份认证失败')
+    if(err.name == 'UnauthorizedError') return res.cc('身份认证失败')
     // 未知错误
     res.cc(err)
 })
+
+const adRouter = require('./router/admin')
+app.use('/admin',adRouter)
 
 app.listen(8000,() =>{
     console.log('运行在 http://10.110.133.212:8000/index.html');

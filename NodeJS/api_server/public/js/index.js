@@ -10,22 +10,25 @@ function loginBtn(){
     }, (data, status) => {
         if (data.status == 0) {
             alert('登录成功')
-
-            $.get(my_ip + '/admin/homePage',{
-                headers:{
-                    Accept: "application/json; charset=utf-8",
-                    authorization: data.token
+            // window.localStorage.setItem('token',data.token)
+            $.ajax({
+                url: my_ip + '/admin/homePage',
+                type: "post",
+                contentType: "application/json",
+                // dataType: 'json',
+                cache: true,
+                async: false,
+                beforeSend: function (XMLHttpRequest) {
+                    XMLHttpRequest.setRequestHeader("Authorization", data.token);
+                },
+                success: function (result) {
+                    if(result.status == 1){
+                        location.href = 'http://10.110.133.212:8000/homePage.html'
+                    }else{
+                        alert(result.message)
+                    }   
                 }
-            }) 
-            // location.href = 'http://10.110.133.212:8000/homePage.html'
-            // $.ajax({
-            //     type:'post',
-            //     url: my_ip + '/admin/homePage',
-            //     headers:{
-            //         "Content-Type":"text/plain;charset=UTF-8",
-            //         "Authorization":data.token
-            //     }
-            // })           
+            })       
         }else {
             alert('错误的用户信息')
         }
@@ -41,3 +44,43 @@ document.addEventListener('keyup',(e)=>{
 $('#logBtn').click(() =>{
     loginBtn();
 })
+
+
+// var ajax1 = function(){
+//     $.ajax({
+//         type:'post',
+//         url: my_ip + '/api/login',
+//         data:{
+//             username: new_account,
+//             password: new_password
+//         },
+//         success:(res) =>{
+//             if(res.status == 0){
+//                 alert('登录成功')
+//                 window.localStorage.setItem('token',res.token)
+//             }
+//         }
+//     })
+// }
+
+// function ajax2() {
+//     alert(window.localStorage.getItem('token'))
+//     $.ajax({
+//         url: my_ip + '/admin/homePage',
+//         type: "post",
+//         contentType: "application/json",
+//         dataType: 'json',
+//         cache: false,
+//         async: true,
+//         beforeSend: function (XMLHttpRequest) {
+//             XMLHttpRequest.setRequestHeader("token", localStorage.token);
+//         },
+//         success: function (result) {
+//             if (result.status === 0) {
+//                 window.location.href = "homePage.html";
+//             } else {
+//                 alert(result.message)
+//             }
+//         }
+//     });
+// }

@@ -4,5 +4,5 @@ module.exports = {
     // 加密和解密 Token 的密钥
     jwtSecretKey:'Omron2018',
 
-    expiresIn:'1h'
+    expiresIn:'10s'
 }

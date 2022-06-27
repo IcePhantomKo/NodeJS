@@ -72,7 +72,9 @@ exports.login = (req,res) =>{
         const user = { ...results[0], password:'', user_pic:''}
 
         // 对用户的信息进行加密，生成Token字符串
-        const tokenStr = jwt.sign(user, config.jwtSecretKey,{expiresIn: config.expiresIn})
+        const tokenStr = jwt.sign(user, config.jwtSecretKey,{
+            expiresIn: config.expiresIn
+        })
 
         res.cookie("token", tokenStr,{
             httpOnly:true
