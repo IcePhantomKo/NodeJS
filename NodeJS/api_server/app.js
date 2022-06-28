@@ -18,7 +18,6 @@ app.use('/public', express.static('public'));
 app.get('/index.html', function (req, res) {
     res.sendFile( __dirname + "/" + "index.html" );
  })
- 
 app.get('/homePage.html',tokenAuth,function(req,res){
     res.sendFile(__dirname + "/" + "homePage.html")
 })
