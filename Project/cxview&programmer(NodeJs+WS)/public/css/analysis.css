@@ -1,0 +1,25 @@
+.analysis{
+    position: absolute;
+    width: 94%;
+    height: 64%;
+    margin-left: 3%;
+    margin-top: 1%;
+    display: none;
+    /* background-color: #17e6ff; */
+}
+
+.analysis_inner{
+    height: 49.5%;
+    width: 32%;
+    margin-top: 1%;
+    margin-left: 1%;
+    float: left;
+}
+#analysis1,#analysis2,#analysis3,
+#analysis4,#analysis5,#analysis6{
+    height: 100%;
+    width: 100%;
+    background-image: url(../img/内容背景.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}

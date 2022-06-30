@@ -1,0 +1,156 @@
+<svg id="组_566_拷贝_3" data-name="组 566 拷贝 3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="282" height="281" viewBox="0 0 282 281">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #0d4660;
+        fill-opacity: 0;
+        opacity: 0.32;
+        filter: url(#filter);
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5, .cls-7, .cls-8 {
+        fill: none;
+        stroke-width: 4px;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke: #0ce1e1;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        filter: url(#filter-2);
+      }
+
+      .cls-3 {
+        filter: url(#filter-3);
+      }
+
+      .cls-4 {
+        filter: url(#filter-4);
+      }
+
+      .cls-5 {
+        filter: url(#filter-5);
+      }
+
+      .cls-6 {
+        fill: #3ce9f2;
+        stroke-width: 1px;
+      }
+
+      .cls-6, .cls-7, .cls-8 {
+        stroke: #3ce9f2;
+      }
+
+      .cls-7, .cls-8 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-7 {
+        filter: url(#filter-6);
+      }
+
+      .cls-8 {
+        filter: url(#filter-7);
+      }
+    </style>
+    <filter id="filter" x="4" y="4" width="258" height="197" filterUnits="userSpaceOnUse">
+      <feGaussianBlur result="blur" stdDeviation="24.333" in="SourceAlpha"/>
+      <feFlood result="flood" flood-color="#42c4ff"/>
+      <feComposite result="composite-2" operator="out" in2="blur"/>
+      <feComposite result="composite" operator="in" in2="SourceAlpha"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+    <filter id="filter-2" x="-8" y="-9" width="61" height="58" filterUnits="userSpaceOnUse">
+      <feGaussianBlur result="blur" stdDeviation="3.333" in="SourceAlpha"/>
+      <feComposite result="composite"/>
+      <feComposite result="composite-2"/>
+      <feComposite result="composite-3"/>
+      <feFlood result="flood" flood-color="#0c949e" flood-opacity="0.44"/>
+      <feComposite result="composite-4" operator="in" in2="composite-3"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+      <feBlend result="blend-2" in="SourceGraphic"/>
+    </filter>
+    <filter id="filter-3" x="216" y="-5" width="57" height="54" filterUnits="userSpaceOnUse">
+      <feGaussianBlur result="blur" stdDeviation="3.333" in="SourceAlpha"/>
+      <feComposite result="composite"/>
+      <feComposite result="composite-2"/>
+      <feComposite result="composite-3"/>
+      <feFlood result="flood" flood-color="#0c949e" flood-opacity="0.44"/>
+      <feComposite result="composite-4" operator="in" in2="composite-3"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+      <feBlend result="blend-2" in="SourceGraphic"/>
+    </filter>
+    <filter id="filter-4" x="212" y="155" width="61" height="58" filterUnits="userSpaceOnUse">
+      <feGaussianBlur result="blur" stdDeviation="3.333" in="SourceAlpha"/>
+      <feComposite result="composite"/>
+      <feComposite result="composite-2"/>
+      <feComposite result="composite-3"/>
+      <feFlood result="flood" flood-color="#0c949e" flood-opacity="0.44"/>
+      <feComposite result="composite-4" operator="in" in2="composite-3"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+      <feBlend result="blend-2" in="SourceGraphic"/>
+    </filter>
+    <filter id="filter-5" x="-9" y="159" width="57" height="54" filterUnits="userSpaceOnUse">
+      <feGaussianBlur result="blur" stdDeviation="3.333" in="SourceAlpha"/>
+      <feComposite result="composite"/>
+      <feComposite result="composite-2"/>
+      <feComposite result="composite-3"/>
+      <feFlood result="flood" flood-color="#0c949e" flood-opacity="0.44"/>
+      <feComposite result="composite-4" operator="in" in2="composite-3"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+      <feBlend result="blend-2" in="SourceGraphic"/>
+    </filter>
+    <filter id="filter-6" x="21" y="57" width="41" height="13" filterUnits="userSpaceOnUse">
+      <feGaussianBlur result="blur" stdDeviation="1.667" in="SourceAlpha"/>
+      <feComposite result="composite"/>
+      <feComposite result="composite-2"/>
+      <feComposite result="composite-3"/>
+      <feFlood result="flood" flood-color="#0ce1e1" flood-opacity="0.66"/>
+      <feComposite result="composite-4" operator="in" in2="composite-3"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+      <feBlend result="blend-2" in="SourceGraphic"/>
+    </filter>
+    <filter id="filter-7" x="211" y="57" width="41" height="13" filterUnits="userSpaceOnUse">
+      <feGaussianBlur result="blur" stdDeviation="1.667" in="SourceAlpha"/>
+      <feComposite result="composite"/>
+      <feComposite result="composite-2"/>
+      <feComposite result="composite-3"/>
+      <feFlood result="flood" flood-color="#0ce1e1" flood-opacity="0.66"/>
+      <feComposite result="composite-4" operator="in" in2="composite-3"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+      <feBlend result="blend-2" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <rect id="矩形_1083" data-name="矩形 1083" class="cls-1" x="4" y="4" width="258" height="197"/>
+  <g style="fill: none; filter: url(#filter-2)">
+    <path id="形状_1137" data-name="形状 1137" class="cls-2" d="M43,4H17L5,13V39" style="stroke: inherit; filter: none; fill: inherit"/>
+  </g>
+  <use xlink:href="#形状_1137" style="stroke: #0ce1e1; filter: none; fill: none"/>
+  <g style="fill: none; filter: url(#filter-3)">
+    <path id="形状_1137_拷贝" data-name="形状 1137 拷贝" class="cls-3" d="M225,4h26l12,9V39" style="stroke: inherit; filter: none; fill: inherit"/>
+  </g>
+  <use xlink:href="#形状_1137_拷贝" style="stroke: #0ce1e1; filter: none; fill: none"/>
+  <g style="fill: none; filter: url(#filter-4)">
+    <path id="形状_1137_拷贝_2" data-name="形状 1137 拷贝 2" class="cls-4" d="M221,199h26l12-9V164" style="stroke: inherit; filter: none; fill: inherit"/>
+  </g>
+  <use xlink:href="#形状_1137_拷贝_2" style="stroke: #0ce1e1; filter: none; fill: none"/>
+  <g style="fill: none; filter: url(#filter-5)">
+    <path id="形状_1137_拷贝_3" data-name="形状 1137 拷贝 3" class="cls-5" d="M38,203H12L0,194V168" style="stroke: inherit; filter: none; fill: inherit"/>
+  </g>
+  <use xlink:href="#形状_1137_拷贝_3" style="stroke: #0ce1e1; filter: none; fill: none"/>
+  <path id="形状_1141" data-name="形状 1141" class="cls-6" d="M27,63H215"/>
+  <g style="fill: none; filter: url(#filter-6)">
+    <path id="形状_1141_拷贝" data-name="形状 1141 拷贝" class="cls-7" d="M27,63H55" style="stroke: inherit; filter: none; fill: inherit"/>
+  </g>
+  <use xlink:href="#形状_1141_拷贝" style="stroke: #3ce9f2; filter: none; fill: none"/>
+  <g style="fill: none; filter: url(#filter-7)">
+    <path id="形状_1141_拷贝_2" data-name="形状 1141 拷贝 2" class="cls-8" d="M217,63h28" style="stroke: inherit; filter: none; fill: inherit"/>
+  </g>
+  <use xlink:href="#形状_1141_拷贝_2" style="stroke: #3ce9f2; filter: none; fill: none"/>
+</svg>

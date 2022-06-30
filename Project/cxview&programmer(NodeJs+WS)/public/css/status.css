@@ -1,0 +1,211 @@
+/* 接入信息 */
+.status{
+    position: absolute;
+    width: 100%;
+    height: 730px;
+    display: block;
+}
+/* 左侧导航栏 */
+.statNavi{
+    position: relative;
+    height: 850px;
+    width: 280px;
+    background-image: url(../img/左侧菜单背景.png);
+    background-size: 100%;
+    float: left;
+}
+.statNaviTitle{
+    position: relative;
+    height: 35px;
+    width: 200px;
+    margin-top: 110px;
+    margin-left: 15px;
+    font-weight: bolder;
+    font-size: 25px;
+    color: #fdd805;
+}
+.statNaviInfo{
+    position: relative;
+    height: 53%;
+    width: 70%;
+    margin-left: -10px;
+}
+.statNaviInfo p{
+    color: #dbd5d5;
+    font-size: large;
+    text-align: center;
+    font-weight: bold;
+    line-height: 35px;
+}
+.statNaviInfo p:hover{
+    color: #e9cf3c;
+    font-weight: bold;
+}
+
+#statNaviInfo1,#statNaviInfo2,#statNaviInfo3,
+#statNaviInfo4,#statNaviInfo5,#statNaviInfo6{
+    position: relative;
+    width: 185px;
+    height: 31px;
+    margin-top: 20px;
+    margin-left: 5%;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+/* 右侧主窗口 隧道1*/
+.statMain1{
+    position: relative;
+    height: 100%;
+    width: 83%;
+    margin-left: 2%;
+    float: left;
+    background-image: url(../img/隧道.svg);
+    background-size: 100%;
+    background-position: 0px 260px;
+    background-repeat: no-repeat;
+}
+.statMain1 h3{
+    color: white;
+    height: 80px;
+}
+/* 右侧主窗口 隧道2*/
+.statMain2{
+    position: relative;
+    height: 100%;
+    width: 83%;
+    margin-left: 2%;
+    float: left;
+    box-shadow: 0px  0px 10px #02b4fa;
+    border:1px solid rgb(11, 223, 223);
+    background: #1d272ca2;
+    background-image: url(../img/隧道2.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: none;
+}
+.stat1Slide1{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /* background-color: #02b4fa; */
+}
+.stat1Slide1{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: block;
+    /* background-color: #02b4fa; */
+}
+.stat1Slide2{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+.status h3{
+    color: #e9cf3c;
+    margin-top: 15px;
+    text-align: center;
+    line-height: 2.3em;
+}
+#statTable{
+    position: relative;
+    height: 70%;
+    width: 100%;
+    margin-top: -50px;
+    /* background-color: rebeccapurple; */
+}
+#statTable table{
+    width: 80%;
+    height: 100%;
+    text-align:left;
+    line-height: 1em;
+    color: white;
+    font-size: 13px;
+    margin-left: 50px;
+    line-height: -1em;
+}
+/* plc1 状态 */
+.plcStatus{
+    position: relative;
+    height: 206px;
+    width: 263px;
+    margin-left: 7%;
+    margin-top: 3%;
+    margin-bottom: 230px;
+    background-image: url(../img/边框.svg);
+    background-color: #17374488;
+    float: left;
+}
+.plcInner_top{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    margin-left: 225px;
+    margin-top: -90px;
+    cursor: pointer;
+    /* background-color: #02b4fa; */
+    /* background-image: url(../icon/更多.png); */
+    background-image: url(../icon/点击白.png);
+    background-size: 100% 100%;
+}
+.plcInner_top:hover{
+    color: #02b4fa;
+    font-size: larger;
+    font-weight: bolder;
+    background-image: url(../icon/点击.png);
+}
+#statTitle{
+    position: relative;
+    width: 700px;
+    height: 30px;
+    margin-left: 320px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: .5em;
+    text-shadow: 2px 1px #02b4fa;
+    /* background-color: gray; */
+}
+#moveNext{
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    margin-left: 1520px;
+    margin-top: 300px;
+    background-image: url(../img/向右.png);
+    background-color:rgba(0, 0, 0, 0.377);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+#moveNext:hover{
+    cursor: pointer;
+    background-image: url(../img/向右1.png);
+}
+#movePrev{
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    margin-left: 20px;
+    margin-top: 300px;
+    background-image: url(../img/向右.png);
+    background-color:rgba(0, 0, 0, 0.377);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    transform: rotate(180deg);
+}
+#movePrev:hover{
+    cursor: pointer;
+    transform: rotate(180deg);
+    background-image: url(../img/向右1.png);
+}

@@ -1,0 +1,360 @@
+html {
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
+body {
+    color: #5D5F63;
+    background-color: black;
+    background-image: url("../img/背景.jpg");
+    /* background-image: url(../img/weixingMap3.png); */
+    background-repeat: no-repeat;
+    background-size: 100%;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0;
+    margin: 0;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+}
+/* 边框样式 */
+.angle-border {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    z-index: 20;
+}
+.left-top-border {
+    top: 0;
+    left: 0;
+    border-left: 2px solid #3ae4fa;
+    border-top: 2px solid #3ae4fa;
+    z-index: 20;
+}
+.right-top-border {
+    top: 0;
+    right: -2px;
+    border-right: 2px solid #3ae4fa;
+    border-top: 2px solid #3ae4fa;
+    z-index: 20;
+}
+.left-bottom-border {
+    bottom: 0;
+    left: 0;
+    border-bottom: 2px solid #3ae4fa;
+    border-left: 2px solid #3ae4fa;
+    z-index: 20;
+}
+.right-bottom-border {
+    bottom: 0;
+    right: -2px;
+    border-right: 2px solid #3ae4fa;
+    border-bottom: 2px solid #3ae4fa;
+    z-index: 20;
+}
+
+/* 底部导航栏 */
+.navigation {
+    position: absolute;
+    height: 105px;
+    width: 1230px;
+    margin-left: 345px;
+    margin-top: 810px;
+    /* margin-top: 500px; */
+    background-image: url("../img/bottom-tab背景.png");
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    line-height: 2em;
+    z-index: 30;
+}
+.navImg1 {
+    position: relative;
+    height: 73px;
+    width: 73px;
+    background-image: url("../img/选中/选中1.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.navImg2 {
+    position: relative;
+    height: 73px;
+    width: 73px;
+    background-image: url("../img/选中/起始2.png");
+    background-size: 100% 100%;
+}
+.navImg3 {
+    position: relative;
+    height: 73px;
+    width: 100%;
+    background-image: url("../img/选中/起始3.png");
+    background-size: 100% 100%;
+}
+.navImg4 {
+    position: relative;
+    height: 73px;
+    width: 100%;
+    background-image: url("../img/选中/起始4.png");
+    background-size: 100% 100%;
+}
+.navImg5 {
+    position: relative;
+    height: 73px;
+    width: 100%;
+    background-image: url("../img/选中/起始5.png");
+    background-size: 100% 100%;
+}
+.navImg6 {
+    position: relative;
+    height: 73px;
+    width: 100%;
+    background-image: url("../img/选中/起始6.png");
+    background-size: 100% 100%;
+}
+.navImg7 {
+    position: relative;
+    height: 73px;
+    width: 100%;
+    background-image: url("../img/选中/起始7.png");
+    background-size: 100% 100%;
+}
+.navImg8 {
+    position: relative;
+    height: 73px;
+    width: 100%;
+    background-image: url("../img/选中/起始8.png");
+    background-size: 100% 100%;
+}
+.navImg9 {
+    position: relative;
+    height: 73px;
+    width: 100%;
+    background-image: url("../img/选中/起始9.png");
+    background-size: 100% 100%;
+}
+
+#homePage {
+    position: relative;
+    height: 90px;
+    width: 73px;
+    margin-left: 110px;
+    margin-top: 0;
+    /* background-color: #0aeec8; */
+    float: left;
+}
+#homePage:hover {
+    cursor: pointer;
+    color: #0aeec8;
+    font-weight: bold;
+}
+
+#Internet {
+    position: relative;
+    height: 90px;
+    width: 73px;
+    margin-left: 45px;
+    margin-top: -20px;
+    float: left;
+}
+#Internet:hover {
+    cursor: pointer;
+    color: #0aeec8;
+    font-weight: bold;
+}
+#equEnviroment {
+    position: relative;
+    height: 90px;
+    width: 73px;
+    margin-left: 45px;
+    margin-top: -40px;
+    float: left;
+}
+#equEnviroment:hover {
+    cursor: pointer;
+    color: #0aeec8;
+    font-weight: bold;
+}
+#equStatus {
+    position: relative;
+    height: 90px;
+    width: 73px;
+    margin-left: 45px;
+    margin-top: -50px;
+    float: left;
+}
+#equStatus:hover {
+    cursor: pointer;
+    color: #0aeec8;
+    font-weight: bold;
+}
+#erroReport {
+    position: relative;
+    height: 90px;
+    width: 73px;
+    margin-left: 45px;
+    margin-top: -60px;
+    float: left;
+}
+#erroReport:hover {
+    cursor: pointer;
+    color: #0aeec8;
+    font-weight: bold;
+}
+#quickFind {
+    position: relative;
+    height: 90px;
+    width: 73px;
+    margin-left: 45px;
+    margin-top: -50px;
+    float: left;
+}
+#quickFind:hover {
+    cursor: pointer;
+    color: #0aeec8;
+    font-weight: bold;
+}
+#analyse {
+    position: relative;
+    height: 90px;
+    width: 73px;
+    margin-left: 45px;
+    margin-top: -40px;
+    float: left;
+}
+#analyse:hover {
+    cursor: pointer;
+    color: #0aeec8;
+    font-weight: bold;
+}
+#fileOpen {
+    position: relative;
+    height: 90px;
+    width: 73px;
+    margin-left: 45px;
+    margin-top: -20px;
+    float: left;
+}
+#fileOpen:hover {
+    cursor: pointer;
+    color: #0aeec8;
+    font-weight: bold;
+}
+#quitPage {
+    position: relative;
+    height: 90px;
+    width: 73px;
+    margin-left: 45px;
+    margin-top: 0;
+    float: left;
+}
+#quitPage:hover {
+    cursor: pointer;
+    color: #0aeec8;
+    font-weight: bold;
+}
+
+/* 主要内容 */
+.Main {
+    position: absolute;
+    height: 80%;
+    width: 100%;
+    display: none;
+    /* background-color: #0aeec8; */
+}
+.Title {
+    position: absolute;
+    height: 9%;
+    width: 100%;
+    margin-top: -5%;
+    margin-left: 36%;
+}
+.Title h1 {
+    position: absolute;
+    text-align: center;
+    color: #2ec7eb;
+    letter-spacing: 11px;
+}
+.leftBar {
+    position: relative;
+    height: 100%;
+    width: 20%;
+    float: left;
+}
+#leftBar1 {
+    position: relative;
+    height: 234px;
+    width: 453px;
+    margin-top: 10%;
+    margin-left: 5%;
+    background-image: url("../img/边框背景.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#leftBar2 {
+    position: relative;
+    height: 234px;
+    width: 453px;
+    margin-top: 4%;
+    margin-left: 5%;
+    background-image: url("../img/边框背景.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#leftBar3 {
+    position: relative;
+    height: 314px;
+    width: 453px;
+    margin-top: 4%;
+    margin-left: 5%;
+    background-image: url("../img/边框背景.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.rightBar {
+    position: relative;
+    height: 100%;
+    width: 20%;
+    margin-left: 145px;
+    float: left;
+}
+
+#rightBar1 {
+    position: relative;
+    height: 234px;
+    width: 453px;
+    margin-top: 10%;
+    margin-left: -90px;
+    background-image: url("../img/边框背景.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+#rightBar2,
+#rightBar3 {
+    position: relative;
+    height: 234px;
+    width: 453px;
+    margin-top: 4%;
+    margin-left: -90px;
+    background-image: url("../img/边框背景.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.imgAnimation{
+    height: 54px;
+    width: 54px;
+    margin-top: 10px; 
+    margin-left: 13px;
+    float: left; -webkit-animation: round_animate 5s linear infinite;
+    animation: round_animate 5s linear infinite; 
+}
+
+#importData{
+    position: absolute;
+    margin-left: -200px;
+    margin-top: 20px;
+}
+#importData:hover{
+    cursor: pointer;
+}
+

@@ -1,0 +1,139 @@
+@-webkit-keyframes bounce-down {
+    25% {-webkit-transform: translateY(-10px);}
+    50%, 100% {-webkit-transform: translateY(0);}
+    75% {-webkit-transform: translateY(10px);}
+   }
+
+   @keyframes bounce-down {
+    25% {transform: translateY(-10px);}
+    50%, 100% {transform: translateY(0);}
+    75% {transform: translateY(10px);}
+   }
+
+   .animate-bounce-down1{ 
+       position: absolute;
+       background-image: url(../icon/箭头红.png); 
+       width: 40px; 
+       height: 40px; 
+       margin-top: 90px;
+       margin-left: 50px;
+       -webkit-animation: bounce-down 2s linear infinite;
+       animation: bounce-down 2s linear infinite;
+       background-size: 100% 100%;
+       background-repeat: no-repeat;
+   }
+/* 隧道标识 */
+/* 金资 */
+#tunnel_1{
+    position:relative;
+    height: 148px;
+    width: 161px;
+    margin-left: 215px;
+    margin-top: 200px;
+}
+/* 熊村 */
+#tunnel_2{
+    position: relative;
+    margin-left: 530px;
+}
+/* 文峰山 */
+#tunnel_3{
+    position: relative;
+    margin-left: 750px; 
+    margin-top: -330px;
+}
+/* 进贤隧道 */
+#tunnel_4{
+    position: relative;
+    margin-left: 740px;
+    margin-top: 420px;
+}
+#tunnelIcon{
+    position:absolute;
+    width: 30px;
+    height: 148px;
+    float: left;
+    background-image: url(../img/map/地图背景2.svg);
+}
+#tunnelTitle{
+    position: absolute;
+    width: 131px;
+    height: 34px;
+    margin-left: 10px;
+    float: left;
+    background-image: url(../img/map/地图隧道名称背景.svg);
+    /* background-color: red; */
+}
+#tunnelTitle p{
+    color: rgb(249, 253, 5);
+    text-align: center;
+    line-height: 1px;
+    font-weight: bold;
+} 
+#tunnelTitle p:hover{
+    cursor: pointer;
+    color: #121470ef;
+    font-weight: bold;
+}
+#tunnelPic{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    /* background-color: red; */
+    margin-top: 85px;
+    margin-left: -38px;
+}
+#midBar{
+    width: 1000px;
+    height: 100%;
+    float: left;
+}
+@-webkit-keyframes wateranimate {
+    0% {
+        -webkit-transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(1);
+        opacity: 0;
+    }
+}
+@keyframes wateranimate {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(2);
+        transform: scale(2);
+        opacity: 0;
+    }
+}	
+.water1 {
+    -webkit-animation: wateranimate 3s 2s ease-out infinite;
+    animation: wateranimate 3s 2s ease-out infinite;
+}			
+.water2 {
+    -webkit-animation: wateranimate 3s 1.5s ease-out infinite;
+    animation: wateranimate 3s 1.5s ease-out infinite;
+}			
+.water3 {
+    -webkit-animation: wateranimate 3s 1s ease-out infinite;
+    animation: wateranimate 3s 1s ease-out infinite;
+}			
+.water4 {
+    -webkit-animation: wateranimate 3s 0s ease-out infinite;
+    animation: wateranimate 3s 0s ease-out infinite;
+}		
+.water1, .water2, .water3, .water4{
+    padding: 20%;
+    position: absolute;
+    left: 30%;
+    top: 30%;
+    border: 2px solid rgb(255, 0, 0);
+    box-shadow: 0 0 50px 30px #fbff00 inset;
+    border-radius: 100%;
+    z-index: 1;
+    opacity: 0;
+}

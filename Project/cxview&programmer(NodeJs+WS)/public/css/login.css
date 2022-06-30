@@ -1,0 +1,22 @@
+/* 注册框 */
+#box{
+    text-align: center;
+    background-color: #fff;
+    border-radius: 20px;
+    width: 500px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    border: 1px solid black;
+}
+/* 注册栏标题 */
+#regTitle{
+    display: block;
+    text-align: center;
+    font-size: larger;
+    font-weight: bolder;
+}

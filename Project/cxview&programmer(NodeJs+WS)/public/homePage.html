@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Omron区域控制器维护系统平台(Demo)</title>
+        <style>
+            @import url(./css/index.css);
+            @import url(./css/chartStyle.css);
+            @import url(./css/status.css);
+            @import url(./css/Module.css);
+            @import url(./css/topology.css);
+            @import url(./css/equEnviroment.css);
+            @import url(./css/table.css);
+            @import url(./css/analysis.css);
+            @import url(./css/weather.css);
+            @import url(./css/map.css);
+        </style>
+        <script src="./js/echarts.min.js"></script>
+        <script src="./js/jquery.js"></script>
+        <script src="./js/jquery.easyui.min.js"></script>
+        <script src="./js/vue.min.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <img src="./img/top1.svg">
+        <!-- Title -->
+        <div class="Title Page">
+            <h1>区域控制器智能诊断维护系统</h1>
+        </div>
+        <!-- 天气 -->
+        <div class="weather">
+            <div id="weatherLeft">
+                <img :src="imgArr[index]"
+                    style="width: 60px;height: 80%;float: left;margin-top: 10px;">
+                <div id="weatherInfo">
+                    <p>{{type}}</p>
+                    <p>{{temp}} °C</p>
+                </div>
+            </div>
+            <div id="weatherRight">
+                <p>{{date}}</p>
+                <p>{{time}}</p>
+            </div>
+        </div>
+        <!-- 底部导航栏 -->
+        <div class="navigation">
+            <div id="homePage">
+                <div id="navImg1" class="navImg1" onclick="botNavChange(this)"></div>主页
+            </div>
+            <div id="Internet">
+                <div id="navImg2" class="navImg2" onclick="botNavChange(this)"></div>网络拓扑
+            </div>
+            <div id="equEnviroment">
+                <div id="navImg3" class="navImg3" onclick="botNavChange(this)"></div>柜体环境
+            </div>
+            <div id="equStatus">
+                <div id="navImg4" class="navImg4" onclick="botNavChange(this)"></div>接入信息
+            </div>
+            <div id="erroReport">
+                <div id="navImg5" class="navImg5" onclick="botNavChange(this)"></div>报警信息
+            </div>
+            <div id="quickFind">
+                <div id="navImg6" class="navImg6" onclick="botNavChange(this)"></div>一键巡查
+            </div>
+            <div id="analyse">
+                <div id="navImg7" class="navImg7" onclick="botNavChange(this)"></div>智能分析
+            </div>
+            <div id="fileOpen">
+                <div id="navImg8" class="navImg8" onclick="botNavChange(this)"></div>项目资料
+            </div>
+            <div id="quitPage">
+                <div id="navImg9" class="navImg9" onclick="botNavChange(this)"></div>刷新
+            </div>
+        </div>
+        <!-- Main content -->
+        <div id="main" class="Main Page0">
+            <div class="leftBar">
+                <div id="leftBar1">
+                    <div id="leftChart1">
+                        <div id="leftChart1Top">
+                            <img src="./img/icon动效背景.png" class="imgAnimation">
+                            <img src="./img/项目信息icon.png"
+                                style="position: absolute; margin-left: -34px;margin-top: 26px;float: left">
+                            <div id="leftChart1-1" style="margin-left: -10px;">项目信息</div>
+                        </div>
+                        <div id="leftChart1Bot">
+                            <table style="width: 100%; height: 100%;text-align: left;color: white;">
+                                <tr>
+                                    <td rowspan="2"><img src="./icon/建设单位.png"></td>
+                                    <td>建设单位</td>
+                                    <td rowspan="2"><img src="./icon/建设单位2.png"></td>
+                                    <td>维护单位</td>
+                                </tr>
+                                <tr>
+                                    <td>欧姆龙自动化</td>
+                                    <td>xxx养护所</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2"><img src="./icon/建设日期.png"></td>
+                                    <td>建设日期</td>
+                                    <td rowspan="2"><img src="./icon/维护单位.png"></td>
+                                    <td>维护单位</td>
+                                </tr>
+                                <tr>
+                                    <td>2021年12月12日</td>
+                                    <td>xxxx单位</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="leftBar2">
+                    <div id="leftChart1Top">
+                        <img src="./img/icon动效背景.png" class="imgAnimation">
+                        <img
+                            src="./img/PLCicon.png"
+                            style="position: absolute; margin-left: -37px;margin-top: 26px;float: left">
+                        <div id="leftChart1-1" style="margin-left: -30px;">PLC</div>
+                    </div>
+                    <div id="leftChart2"></div>
+                    <img
+                        src="./img/交换机动效图层.png"
+                        style="height: 165px;width: 155px;
+                    margin-top: -140px; margin-left: 260px;
+                    float: left; -webkit-animation: round_animate 5s linear infinite;
+                    animation: round_animate 5s linear infinite; ">
+                    <div id="leftChart2info">
+                        <div id="left2Info1">
+                            <p style="float: left; margin-top: 0em;">正常:</p>
+                            <p id="plcOnline" style="float: left; margin-top: 0em;">0</p>
+                        </div>
+                        <div id="left2Info2">
+                            <p style="float: left; margin-top: 0em;">故障:</p>
+                            <p id="plcOffline" style="float: left; margin-top: 0em;">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="leftBar3">
+                    <div id="leftChart1Top">
+                        <img src="./img/icon动效背景.png" class="imgAnimation">
+                        <img
+                            src="./img/交换机icon.png"
+                            style="position: absolute; margin-left: -37px;margin-top: 26px;float: left">
+                        <div id="leftChart1-1" style="margin-left: -20px;">交换机</div>
+                    </div>
+                    <div id="leftChart3"></div>
+                    <img
+                        src="./img/交换机动效图层.png"
+                        style="height: 165px;width: 155px;
+                    margin-top: -142px; margin-left: 256px;
+                    float: left; -webkit-animation: round_animate 5s linear infinite;
+                    animation: round_animate 5s linear infinite; ">
+                    <div id="leftChart2info">
+                        <div id="left2Info1">
+                            <p style="float: left; margin-top: 0em;">在线:</p>
+                            <p id="switchOnline" style="float: left; margin-top: 0em;">0</p>
+                        </div>
+                        <div id="left2Info2">
+                            <p style="float: left; margin-top: 0em;">离线:</p>
+                            <p id="switchOffline" style="float: left; margin-top: 0em;">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 中部地图 -->
+            <div id="midBar">
+                <tunnel_pos
+                    v-for = "(item,index) in tunnelList"
+                    v-bind:tunnel-name="item.tunnelName"
+                    :id="tunnelID(index)"
+                ></tunnel_pos>
+            </div>
+            <!-- 右侧Bar -->
+            <div class="rightBar">
+                <div id="rightBar1">
+                    <div id="leftChart1Top">
+                        <img src="./img/icon动效背景.png" class="imgAnimation">
+                        <img
+                            src="./img/最高最低对比icon.png"
+                            style="position: absolute; margin-left: -37px;margin-top: 26px;float: left">
+                        <div id="leftChart1-1" style="margin-left: -10px;">动环参数</div>
+                    </div>
+                    <div id="rightChart1"></div>
+                </div>
+                <div id="rightBar2">
+                    <div id="leftChart1Top">
+                        <img src="./img/icon动效背景.png" class="imgAnimation">
+                        <img
+                            src="./img/故障率icon.png"
+                            style="position: absolute; margin-left: -37px;margin-top: 26px;float: left">
+                        <div id="leftChart1-1" style="width: 22%;">故障率</div>
+                        <div id="rightChart2TopOption">
+                            <div id="errorOption1" onclick="errorOption(this)" class="option_current">7天</div>
+                            <div id="errorOption2" onclick="errorOption(this)">15天</div>
+                            <div id="errorOption3" onclick="errorOption(this)">50天</div>
+                        </div>
+                    </div>
+                    <div id="rightChart2-1"></div>
+                    <div id="rightChart2-2"></div>
+                    <div id="rightChart2-3"></div>
+                </div>
+                <div id="rightBar3">
+                    <div id="leftChart1Top">
+                        <img src="./img/icon动效背景.png" class="imgAnimation">
+                        <img
+                            src="./img/实时报警icon.png"
+                            style="position: absolute; margin-left: -41px;margin-top: 21px;float: left">
+                        <div id="leftChart1-1" style="width: 22%;">实时报警</div>
+                    </div>
+                    <!-- 实时报警Table -->
+                    <div id="rightBar3Info">
+                        <!-- 表头容器 -->
+                        <div class="tbl-header">
+                            <table border="0" cellspacing="0" cellpadding="0">
+                                <thead>
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>时间</th>
+                                        <th>报警描述</th>
+                                        <th>当前值</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="opacity:0;"></tbody>
+                            </table>
+                        </div>
+                        <!-- 表格内容容器-->
+                        <div class="tbl-body">
+                            <table border="0" cellspacing="0" cellpadding="0">
+                                <thead>
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>时间</th>
+                                        <th>报警描述</th>
+                                        <th>当前值</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 网络拓扑图 -->
+        <div class="topology Page1">
+            <div class="topoNavi">
+                <div class="topoNaviTitle">隧道导航</div>
+                <div id="topNaviSub">Tunnel Navigation</div>
+                <hr style="margin-left: 10px; width: 60%; 
+                    border: 1px solid rgba(128, 128, 128, 0.637);">
+                <div class="topoNaviInfo">
+                    <div id="topoNaviInfo1" onclick="topo_nav(this)" class="current">
+                        <p>金资隧道</p>
+                    </div>
+                    <div id="topoNaviInfo2" onclick="topo_nav(this)">
+                        <p>熊村隧道</p>
+                    </div>
+                    <div id="topoNaviInfo3" onclick="topo_nav(this)">
+                        <p>文峰山隧道</p>
+                    </div>
+                    <div id="topoNaviInfo4" onclick="topo_nav(this)">
+                        <p>进贤隧道</p>
+                    </div>
+                    <div id="topoNaviInfo5" onclick="topo_nav(this)">
+                        <p>xxx隧道</p>
+                    </div>
+                    <div id="topoNaviInfo6" onclick="topo_nav(this)">
+                        <p>zzz隧道</p>
+                    </div>
+                </div>
+            </div>
+            <div class="topoMain1">
+                <div class="topoTitle">隧道桩号：K+111-111-111 (1/1)</div>
+                <!-- 导入数据 -->
+                <topo_box
+                    v-for="item in topo_list"
+                    v-bind:key="item.id"
+                    v-bind:plc-ip="item.plcIp"
+                    v-bind:plc-num="item.plcNum"
+                    v-bind:swt-ip="item.swtIp"
+                    v-bind:plc-img="item.plcImg"
+                    v-bind:swt-img="item.swtImg"
+                >
+                </topo_box>
+                <div class="cycle"></div>
+            </div>
+            <div class="topoMain2">
+                <div class="topoTitle">隧道桩号：K+222-222-222 (1/1)</div>
+            </div>
+        </div>
+        <!-- 柜体环境 -->
+        <div class="equEnviroment Page2">
+            <div class="equNavi">
+                <div class="equNaviTitle">隧道导航</div>
+                <div id="equNaviSub">Tunnel Navigation</div>
+                <hr style="margin-left: 10px; width: 60%;border: 1px solid rgba(128, 128, 128, 0.637);">
+                <div class="equNaviInfo">
+                    <div id="equNaviInfo1" onclick="change_bg(this)" class="current">
+                        <p>{{tn1}}</p>
+                    </div>
+                    <div id="equNaviInfo2" onclick="change_bg(this)">
+                        <p>{{tn2}}</p>
+                    </div>
+                    <div id="equNaviInfo3" onclick="change_bg(this)">
+                        <p>{{tn3}}</p>
+                    </div>
+                    <div id="equNaviInfo4" onclick="change_bg(this)">
+                        <p>{{tn4}}</p>
+                    </div>
+                    <div id="equNaviInfo5" onclick="change_bg(this)">
+                        <p>{{tn5}}</p>
+                    </div>
+                    <div id="equNaviInfo6" onclick="change_bg(this)">
+                        <p>{{tn6}}</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 设备环境右侧主窗口隧道1 -->
+            <div class="equMain1">
+                <div class="topoTitle">隧道桩号：柜体环境</div>
+                <plc_box
+                    v-for="item in plc_box_list"
+                    v-bind:key="item.id"
+                    v-bind:temperature="item.temperature"
+                    v-bind:humidity="item.humidity"
+                    v-bind:power-s="item.powerS"
+                    v-bind:box-name="item.boxName"></plc_box>
+                <div id="plcBox1"></div>
+                <div id="plcBox2"></div>
+                <div id="plcBox2"></div>
+                <div id="plcBox2"></div>
+            </div>
+            <!-- 设备环境右侧主窗口隧道2 -->
+            <div class="equMain2"></div>
+        </div>
+        <!-- 接入信息 -->
+        <div class="status Page3">
+            <div class="statNavi">
+                <div class="statNaviTitle">隧道导航</div>
+                <div id="equNaviSub">Tunnel Navigation</div>
+                <hr
+                    style="margin-left: 10px; width: 60%;border: 1px solid rgba(128, 128, 128, 0.637);">
+                <div class="statNaviInfo">
+                    <div id="statNaviInfo1" onclick="stat_nav(this)" class="current">
+                        <p>金资隧道</p>
+                    </div>
+                    <div id="statNaviInfo2" onclick="stat_nav(this)">
+                        <p>熊村隧道</p>
+                    </div>
+                    <div id="statNaviInfo3" onclick="stat_nav(this)">
+                        <p>文峰山隧道</p>
+                    </div>
+                    <div id="statNaviInfo4" onclick="stat_nav(this)">
+                        <p>进贤隧道</p>
+                    </div>
+                    <div id="statNaviInfo5" onclick="stat_nav(this)">
+                        <p>xxx隧道</p>
+                    </div>
+                    <div id="statNaviInfo6" onclick="stat_nav(this)">
+                        <p>zzz隧道</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 设备状态 隧道1 -->
+            <div class="statMain1">
+                <!-- 隧道1Slide1页 -->
+                <div class="stat1Slide1">
+                    <div class="topoTitle">隧道桩号：接入信息</div>
+                    <div id="moveNext"></div>
+                    <plc_eq
+                        v-for="(item,index) in status_list"
+                        v-bind:box-name="item.boxName"
+                        v-bind:zm="item.zm"
+                        v-bind:fan="item.fan"
+                        v-bind:ls="item.ls"
+                        v-bind:co="item.co"
+                        v-bind:ws="item.ws"
+                        :id="forId(index)"    
+                    >
+                    </plc_eq>
+                </div>
+                <div class="stat1Slide2">
+                    <div class="topoTitle">隧道桩号：设备状态2</div>
+                    <div id="movePrev"></div>
+                    <plc_eq></plc_eq>
+                    <!-- <div id="moveNext"></div> -->
+                </div>
+            </div>
+            <div class="statMain2"></div>
+        </div>
+        <!-- 故障日志 -->
+        <!-- 一件巡查 -->
+        <!-- 智能分析 -->
+        <!------------------------------------- 模块选项 ---------------------------------->
+        <div class="modal">
+            <modal_con
+                v-for = "item in modalList"
+                v-bind:key= "item.id"
+                v-bind:mod-name = "item.modName"
+                v-bind:modal= "item.modal"
+                v-bind:slot-num = "item.slotNum"
+                v-bind:mod-info = "item.modInfo"
+                v-bind:stat-img = "item.statImg"
+                v-bind:dvc-name = "item.dvcName"
+                v-bind:dvc-count = "item.dvcCount"
+                v-bind:dvc-access = "item.dvcAccess"
+                v-bind:dvc-index = "item.dvcIndex"
+                v-bind:dvc-pos = "item.dvcPos"
+            ></modal_con>                    
+        </div>
+        <!------------------------------------- 智能分析 ---------------------------------->
+        <div class="analysis Page6">
+            <div class="analysis_inner">
+                <div id="analysis1"></div>
+            </div>
+            <div class="analysis_inner">
+                <div id="analysis2"></div>
+            </div>
+            <div class="analysis_inner">
+                <div id="analysis3"></div>
+            </div>
+            <div class="analysis_inner">
+                <div id="analysis4"></div>
+            </div>
+            <div class="analysis_inner">
+                <div id="analysis5"></div>
+            </div>
+            <div class="analysis_inner">
+                <div id="analysis6"></div>
+            </div>
+        </div>
+    </body>
+    <script src="./js/index.js"></script>
+    <script src="./js/topology.js"></script>
+    <script src="./js/leftChart2.js"></script>
+    <script src="./js/leftChart3.js"></script>
+    <script src="./js/rightChart1.js"></script>
+    <script src="./js/rightChart2.js"></script>
+    <script src="./js/equEnviroment.js"></script>
+    <script src="./js/table.js"></script>
+    <script src="./js/status.js"></script>
+    <script src="./js/analysis1.js"></script>
+    <script src="./js/analysis2.js"></script>
+    <script src="./js/analysis3.js"></script>
+    <script src="./js/analysis4.js"></script>
+    <script src="./js/analysis5.js"></script>
+    <script src="./js/analysis6.js"></script>
+    <script src="./js/weather.js"></script>
+    <script src="./js/mapNavi.js"></script>
+    <script src="./js/receiveData.js"></script>
+    <script src="./js/modal.js"></script>
+    <script src="./js/wsServer.js"></script>
+</html>

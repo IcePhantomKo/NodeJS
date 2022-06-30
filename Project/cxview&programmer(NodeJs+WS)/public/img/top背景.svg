@@ -1,0 +1,95 @@
+<svg id="top2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="90" viewBox="0 0 1920 90">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #0e4669;
+        filter: url(#filter);
+      }
+
+      .cls-1, .cls-10, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9 {
+        fill-rule: evenodd;
+      }
+
+      .cls-10, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7 {
+        fill: none;
+        stroke: #28b3ea;
+        stroke-width: 1px;
+      }
+
+      .cls-3 {
+        opacity: 0.45;
+      }
+
+      .cls-4 {
+        opacity: 0.4;
+      }
+
+      .cls-5 {
+        opacity: 0.23;
+      }
+
+      .cls-6 {
+        opacity: 0.2;
+      }
+
+      .cls-7 {
+        opacity: 0.1;
+      }
+
+      .cls-8 {
+        fill: #28b3ea;
+      }
+
+      .cls-9 {
+        fill: #0c637d;
+      }
+
+      .cls-10, .cls-9 {
+        opacity: 0.27;
+      }
+    </style>
+    <filter id="filter" x="-13" y="0" width="1941" height="92" filterUnits="userSpaceOnUse">
+      <feImage preserveAspectRatio="none" x="-13" y="0" width="1941" height="92" result="image" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTk0MSIgaGVpZ2h0PSI5MiIgdmlld0JveD0iMCAwIDE5NDEgOTIiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50KTsKICAgICAgfQogICAgPC9zdHlsZT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50IiB4MT0iOTcwLjUiIHkxPSI5MiIgeDI9Ijk3MC41IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzBkNDA1YiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwYzFiMmYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IGNsYXNzPSJjbHMtMSIgd2lkdGg9IjE5NDEiIGhlaWdodD0iOTIiLz4KPC9zdmc+Cg=="/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <path id="矩形_1081_拷贝_4" data-name="矩形 1081 拷贝 4" class="cls-1" d="M1449.33,68L1426,92H496L472.667,68H-13V0H1928V68H1449.33Z"/>
+  <g id="组_561" data-name="组 561">
+    <path id="矩形_1082_拷贝_6" data-name="矩形 1082 拷贝 6" class="cls-2" d="M1364,75h4l-7,9h-4Z"/>
+    <path id="矩形_1082_拷贝_7" data-name="矩形 1082 拷贝 7" class="cls-3" d="M1357,75h4l-7,9h-4Z"/>
+    <path id="矩形_1082_拷贝_8" data-name="矩形 1082 拷贝 8" class="cls-4" d="M1350,75h4l-7,9h-4Z"/>
+    <path id="矩形_1082_拷贝_9" data-name="矩形 1082 拷贝 9" class="cls-5" d="M1343,75h4l-7,9h-4Z"/>
+    <path id="矩形_1082_拷贝_10" data-name="矩形 1082 拷贝 10" class="cls-6" d="M1336,75h4l-7,9h-4Z"/>
+    <path id="矩形_1082_拷贝_11" data-name="矩形 1082 拷贝 11" class="cls-7" d="M1329,75h4l-7,9h-4Z"/>
+    <g id="组_560" data-name="组 560">
+      <path id="矩形_1082" data-name="矩形 1082" class="cls-2" d="M1388,69h5l-11,15h-5Z"/>
+      <path id="矩形_1082_拷贝_4" data-name="矩形 1082 拷贝 4" class="cls-2" d="M1378,69h5l-11,15h-5Z"/>
+      <path id="矩形_1082_拷贝" data-name="矩形 1082 拷贝" class="cls-2" d="M1398,69h5l-11,15h-5Z"/>
+      <path id="矩形_1082_拷贝_2" data-name="矩形 1082 拷贝 2" class="cls-2" d="M1408,69h5l-11,15h-5Z"/>
+      <path id="矩形_1082_拷贝_3" data-name="矩形 1082 拷贝 3" class="cls-2" d="M1418,69h5l-11,15h-5Z"/>
+      <path id="矩形_1082_拷贝_5" data-name="矩形 1082 拷贝 5" class="cls-8" d="M1428,69h5l-11,15h-5"/>
+    </g>
+  </g>
+  <g id="组_562" data-name="组 562">
+    <g id="组_559" data-name="组 559">
+      <path id="矩形_1082_拷贝_12" data-name="矩形 1082 拷贝 12" class="cls-2" d="M561,75h-4l7,9h4Z"/>
+      <path id="矩形_1082_拷贝_12-2" data-name="矩形 1082 拷贝 12" class="cls-3" d="M568,75h-4l7,9h4Z"/>
+      <path id="矩形_1082_拷贝_12-3" data-name="矩形 1082 拷贝 12" class="cls-4" d="M575,75h-4l7,9h4Z"/>
+      <path id="矩形_1082_拷贝_12-4" data-name="矩形 1082 拷贝 12" class="cls-5" d="M582,75h-4l7,9h4Z"/>
+      <path id="矩形_1082_拷贝_12-5" data-name="矩形 1082 拷贝 12" class="cls-6" d="M589,75h-4l7,9h4Z"/>
+      <path id="矩形_1082_拷贝_12-6" data-name="矩形 1082 拷贝 12" class="cls-7" d="M596,75h-4l7,9h4Z"/>
+    </g>
+    <g id="组_558" data-name="组 558">
+      <path id="矩形_1082_拷贝_13" data-name="矩形 1082 拷贝 13" class="cls-2" d="M539,69h-5l11,15h5Z"/>
+      <path id="矩形_1082_拷贝_13-2" data-name="矩形 1082 拷贝 13" class="cls-2" d="M549,69h-5l11,15h5Z"/>
+      <path id="矩形_1082_拷贝_13-3" data-name="矩形 1082 拷贝 13" class="cls-2" d="M529,69h-5l11,15h5Z"/>
+      <path id="矩形_1082_拷贝_13-4" data-name="矩形 1082 拷贝 13" class="cls-2" d="M519,69h-5l11,15h5Z"/>
+      <path id="矩形_1082_拷贝_13-5" data-name="矩形 1082 拷贝 13" class="cls-2" d="M509,69h-5l11,15h5Z"/>
+      <path id="矩形_1082_拷贝_13-6" data-name="矩形 1082 拷贝 13" class="cls-8" d="M499,69h-5l11,15h5"/>
+    </g>
+  </g>
+  <path id="矩形_1081" data-name="矩形 1081" class="cls-9" d="M561.6-2h795.8l-55,92H616.6Z"/>
+  <path id="矩形_1081_拷贝_3" data-name="矩形 1081 拷贝 3" class="cls-10" d="M1358.4-2l-55,92"/>
+  <path id="矩形_1081_拷贝_2" data-name="矩形 1081 拷贝 2" class="cls-10" d="M617.6,90l-55-92"/>
+</svg>

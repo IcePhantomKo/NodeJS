@@ -1,0 +1,150 @@
+/* 网络拓扑图 */
+.equEnviroment{
+    position: absolute;
+    width: 100%;
+    height: 730px;
+    display: none;
+}
+/* 左侧导航栏 */
+.equNavi{
+    position: relative;
+    height: 850px;
+    width: 280px;
+    background-image: url(../img/左侧菜单背景.png);
+    background-size: 100%;
+    float: left;
+}
+.equNaviTitle{
+    position: relative;
+    height: 35px;
+    width: 200px;
+    margin-top: 110px;
+    margin-left: 15px;
+    font-weight: bolder;
+    font-size: 25px;
+    color: #fdd805;
+}
+#equNaviSub{
+    position: relative;
+    height: 20px;
+    width: 200px;
+    margin-top: 5px;
+    margin-left: 20px;
+    color: #bdd6f7;
+}
+.equNaviInfo{
+    position: relative;
+    height: 53%;
+    width: 70%;
+    margin-left: -10px;
+}
+.equNaviInfo p{
+    color: #dbd5d5;
+    font-size: large;
+    text-align: center;
+    font-weight: bold;
+    line-height: 35px;
+}
+.equNaviInfo p:hover{
+    color: #e9cf3c;
+    font-weight: bold;
+}
+#equNaviInfo1{
+    position: relative;
+    width: 185px;
+    height: 31px;
+    margin-top: 20px;
+    margin-left: 5%;
+    cursor: pointer;
+    /* background-image: url(../img/左侧菜单-选中.svg); */
+}
+#equNaviInfo2,#equNaviInfo3,
+#equNaviInfo4,#equNaviInfo5,#equNaviInfo6{
+    position: relative;
+    width: 185px;
+    height: 31px;
+    margin-top: 20px;
+    margin-left: 5%;
+    cursor: pointer;
+}
+/* PLC柜内环境参数 */
+#plcParameter1,#plcParameter2,#plcParameter3,#plcParameter4{
+    position: relative;
+    height: 206px;
+    width: 263px;
+    margin-left: 7%;
+    margin-top: 3%;
+    background-image: url(../img/边框.svg);
+    background-color: rgba(23, 55, 68, 0.533);
+    float: left;
+}
+.equMain1 h3{
+    color: #e9cf3c;
+    margin-top: 15px;
+    text-align: center;
+    line-height: 2.3em;
+}
+.equMain1 h4{
+    color: white;
+    text-align: center;
+    line-height: 1em;
+}
+#equTable{
+    position: relative;
+    height: 60%;
+    width: 100%;
+    margin-top: -5px;
+    /* background-color: rebeccapurple; */
+}
+#plcBox1{
+    position: relative;
+    height: 50px;
+    width: 50px;
+    margin-top: 20px;
+    margin-left: 230px;
+    background-image: url(../img/机柜行.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    float: left;
+}
+#plcBox2{
+    position: relative;
+    height: 50px;
+    width: 50px;
+    margin-top: 20px;
+    margin-left: 325px;
+    background-image: url(../img/机柜行.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    float: left;
+    /* background-color: #bdd6f7; */
+}
+/* 右侧主窗口 隧道1*/
+.equMain1{
+    position: relative;
+    height: 100%;
+    width: 83%;
+    margin-left: 2%;
+    float: left;
+    background-image: url(../img/隧道.svg);
+    background-size: 100%;
+    background-position: 0px 260px;
+    background-repeat: no-repeat;
+    /* background-color: #e9cf3c; */
+}
+/* 右侧主窗口 隧道2*/
+.equMain2{
+    position: relative;
+    height: 100%;
+    width: 83%;
+    margin-left: 2%;
+    float: left;
+    background-image: url(../img/隧道.svg);
+    background-size: 100%;
+    background-position: 0px 260px;
+    background-repeat: no-repeat;
+    display: none;
+}
+.current{
+    background-image: url(../img/左侧菜单-选中.svg);
+}

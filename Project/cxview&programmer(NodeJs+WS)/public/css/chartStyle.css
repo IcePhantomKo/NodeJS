@@ -1,0 +1,244 @@
+/* Chart表格样式 */
+#leftChart1{
+    position: relative;
+    width: 98%;
+    height: 98%;
+    left: 1%;
+    top: 2%;
+}
+/* leftChart1 Title+Logo */
+#leftChart1Top{
+    position: relative;
+    width: 100%;
+    height: 15%;
+}
+#leftChart1-1{
+    position: relative;
+    height: 100%;
+    width: 30%;
+    margin-left: 10px;
+    margin-top: 22px;
+    float: left;
+    color: #fdd805;
+    text-align: center;
+    line-height: 25px;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+     /* background-color: red; */
+}
+
+
+#leftChart1Bot{
+    position: relative;
+    height: 67%;
+    width: 85%;
+    margin-top: 33px;
+    margin-left: 30px;
+    color: white;
+}
+
+
+
+#leftChart1Bot img{
+    float: left;
+    margin-top: 10px;
+}
+#leftChart1Bot h5{
+    float: left;
+    margin-top: 1px;
+    margin-left: 15px;
+}
+#botInfo{
+    position: absolute;
+    height: 27px;
+    width: 130px;
+    margin-left: 45px;
+    margin-top: 23px;
+    text-align: left;
+    font-size: large;
+}
+#leftInfo1{
+    position: absolute;
+    height: 60px;
+    width: 160px;
+    margin-top: 40px;
+    margin-left: 50px;
+    float: left;
+    /* background-color: #ff3c00; */
+}
+#leftInfo2{
+    position: relative;
+    height: 60px;
+    width: 160px;
+    margin-top: 40px;
+    margin-left: 50px;
+    float: left;
+    /* background-color: #ff3c00; */
+
+}
+#leftInfo3{
+    position: relative;
+    height: 60px;
+    width: 160px;
+    margin-top: 15px;
+    margin-left: 50px;
+    float: left;
+    /* background-color: #ff3c00; */
+}
+#leftInfo4{
+    position: relative;
+    height: 60px;
+    width: 160px;
+    margin-top: 15px;
+    margin-left: 30px;
+    float: left;
+    /* background-color: #ff3c00; */
+
+}
+#leftChart2{
+    position: relative;
+    width: 50%;
+    height: 70%;
+    left: 0%;
+    top: 10%;
+    float: right;
+    /* background-color: rebeccapurple; */
+}
+#leftChart2info{
+    position: absolute;
+    width: 45%;
+    height: 70%;
+    margin-top: 5%;
+    margin-left: 25px;
+    font-weight: bold;
+    z-index: 20;
+    /* background-color: #fdd805; */
+    float: right;
+}
+#leftChart2info p{
+    color: white;
+    margin-left: 10px;
+}
+
+#left2Info1{
+    position: relative;
+    height: 25px;
+    width: 100%;
+    margin-top: 20%;
+    margin-left: 15px;
+    background-image: url(../img/正常背景.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#left2Info2{
+    position: relative;
+    height: 25px;
+    width: 100%;
+    margin-top: 15%;
+    margin-left: 15px;
+    background-image: url(../img/故障背景.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#leftChart3{
+    position: relative;
+    width: 50%;
+    height: 50%;
+    left: 3%;
+    top: 5%;
+    /* background-color: #fdd805; */
+    float: left;
+}
+#leftChart3info p{
+    color: white;
+    margin-left: 10px;
+}
+#rightChart1{
+    position: relative;
+    width: 98%;
+    height: 70%;
+    left: 2%;
+    top: 10%;
+    /* background-color: #fdd805; */
+}
+
+#rightChart2TopOption{
+    position: relative;
+    width: 40%;
+    height: 100%;
+    margin-left: 35%;
+    margin-top: -45px;
+    float: left;
+    /* background-color: #fdd805; */
+}
+#errorOption1,#errorOption2,#errorOption3{
+    position: relative;
+    height: 60%;
+    width: 25%;
+    margin-top: 15px;
+    margin-left: 13px;
+    color: white;
+    text-align: center;
+    line-height: 20px;
+    font-size: small;
+    float: left;
+    cursor: pointer;
+    border-radius: 3px;
+    border: .2px solid rgb(40, 153, 247);
+}
+.option_current{
+    background: #62a7d0;
+}
+
+#rightChart2-1{
+    position: relative;
+    width: 92%;
+    height: 65%;
+    margin-top: 10%;
+    left: 4%;
+    display: block;
+    /* background-color: #62a7d0; */
+}
+#rightChart2-2{
+    position: relative;
+    width: 92%;
+    height: 65%;
+    margin-top: 10%;
+    left: 4%;
+    display: none;
+}
+#rightChart2-3{
+    position: relative;
+    width: 92%;
+    height: 65%;
+    margin-top: 10%;
+    left: 4%;
+    display: none;
+}
+#rightBar3Title{
+    position: relative;
+    height: 100%;
+    width: 30%;
+    float: left;
+    color: #fdd805;
+    text-align: center;
+    line-height: 40px;
+    font-size: large;
+    font-weight: bold;
+}
+#rightBar3Info{
+    position: absolute;
+    height: 68%;
+    width: 92%;
+    margin-top: 7%;
+    margin-left: 4%;
+    overflow: hidden;
+    /* background-color: #061a67; */
+}
+
+@keyframes round_animate{
+    to{
+        transform: rotate(1turn);
+    }
+}

@@ -1,0 +1,162 @@
+.modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+    display: none; /* Hidden by default */
+    z-index: 100;
+}
+.easyui-draggable {
+    position: absolute;
+    width: 1500px;
+    height: 850px;
+    margin-top: -5em;
+    margin-left: 10%;
+    background-image: url("../img/内容背景.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 20;
+    display: block;
+    z-index: 999;
+}
+/* 标题 */
+.easyui-draggable #title {
+    width: 97.4%;
+    margin-top: 18px;
+    margin-left: 5px;
+    padding: 5px;
+    background: rgba(61, 58, 58, 0.795);
+    border-radius: 15px 15px 0 0;
+    color: white;
+    font-weight: bold;
+}
+/* 关闭 */
+#close {
+    position: absolute;
+    height: 100%;
+    width: 20px;
+    color: white;
+    margin-top: -22px;
+    margin-left: 96%;
+    z-index: 20px;
+    cursor: pointer;
+}
+#close:hover {
+    color: rgb(199, 12, 12);
+}
+/* 左侧部分 */
+.euLeft{
+    position: relative;
+    width: 20%;
+    height: 93%;
+    float: left;
+    /* background-color: aliceblue; */
+}
+#power{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin-left: 30%;
+    margin-top: 50%;
+    background-image: url(../img/设备状态点击弹框/电源.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    /* background-color: aliceblue; */
+}
+#restart{
+    position: relative;
+    height: 38px;
+    width: 93px;
+    margin-left: 40%;
+    margin-top: 10%;
+    background-image: url(../img/设备状态点击弹框/重启背景.png);
+    color: white;
+    font-size: larger;
+    text-align: center;
+    line-height: 2em;
+    cursor: pointer;
+}
+#restart:hover{
+    color: aqua;
+}
+.euRight{
+    position: relative;
+    width: 78.5%;
+    height: 93%;
+    float: left;
+}
+.euTop{
+    position: relative;
+    width: 92%;
+    height: 45%;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+.euTop h3{
+    text-align: center; 
+    color: #ffffff;
+}
+.euTop table{
+    width: 100%;
+    height: 100%; 
+    text-align: center; 
+    color: #ffffff;
+}
+.euTop img{
+    height: 32px;
+    width: 32px;
+}
+.euBot1{
+    position: relative;
+    width: 92%;
+    height: 40%;
+    margin-left: 50px;
+    margin-top: 120px;
+    /* background-color: aliceblue; */
+}
+.euBot1 h3{
+    text-align: center; 
+    color: #ffffff;
+}
+.euBot1 table{
+    height: 70%; 
+    width: 100%; 
+    text-align: center;
+    color: white;
+}
+/* DI/DO模块 */
+#eui4{
+    cursor: pointer;
+}
+#eui4:hover{
+    background-color: #71d7e9c0;
+}
+#eui5{
+    cursor: pointer;
+}
+#eui5:hover{
+    background-color: #71d7e9c0;
+}
+#eui6{
+    cursor: pointer;
+}
+#eui6:hover{
+    background-color: #71d7e9c0;
+}
+
+/* color */
+.titleBlue{
+    background-color:#2673ba;
+}
+.lightBlue{
+    background-color: #1e4c77;
+}
+.darkBlue{
+    background-color:#0c1f2c;
+}
