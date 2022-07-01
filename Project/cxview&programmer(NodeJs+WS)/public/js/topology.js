@@ -31,6 +31,7 @@ var topo = new Vue({
             {id:2,plcIp:'',plcNum:'',swtIp:' 暂无数据',plcImg: errorImg, swtImg: errorImg},
             {id:3,plcIp:'',plcNum:'',swtIp:' 暂无数据',plcImg: errorImg, swtImg: errorImg},
             {id:4,plcIp:'',plcNum:'',swtIp:' 暂无数据',plcImg: errorImg, swtImg: errorImg},
+            // {id:5,plcIp:'',plcNum:'',swtIp:' 暂无数据',plcImg: errorImg, swtImg: errorImg},
         ],
         index:0,
     },

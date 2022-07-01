@@ -31,20 +31,24 @@ function botNavChange(obj){
         $("#"+obj.id).css("background-image","url(./img/选中/"+imgList[equNum-1]+")");
     }  
 
-    var interval;
-
     switch(equNum){
         case '1':
-            var interval = setInterval(() => {
-                GetAlarm();
-                plcStatus();
-            }, 1000);
+            // setInterval(()=>{
+            //     GetAlarm();
+            // },1000)
+            // ws.onmessage = (e) =>{
+            //     console.log(e.data);
+            // }
             break;
 
         // 网络拓扑图 POST('/admin/topology') 
         case '2':
-            clearInterval(interval)
-            
+            // setInterval(() => {
+            //     page1Info()
+            // }, 1000);
+            // ws.onmessage=(e)=>{
+            //     console.log(e.data);
+            // }
             var new_token = window.localStorage.getItem('token')
             $.ajax({
                 url: 'http://10.110.133.212:8000/admin/topology',
@@ -89,21 +93,6 @@ function botNavChange(obj){
         // 接入信息 
         // POST('/admin/modChal')
         // POST('/admin/devCon')
-        case '4':
-            var new_token = window.localStorage.getItem('token')
-            $.ajax({
-                url: 'http://10.110.133.212:8000/admin/modChal',
-                type: 'post',
-                contentType: 'application/json',
-                cache:true,
-                async:true,
-                beforeSend: function (XMLHttpRequest) {
-                    XMLHttpRequest.setRequestHeader("Authorization", new_token);
-                },
-                success:function(result){
-                    console.log(result.message);
-                }
-            })
             break;
     }
     

@@ -19,6 +19,7 @@ if (window.WebSocket) {
             }';
             // 发送
             this.ws.send(loginInfo);
+
         }
 
         this.ws.onclose = (e) =>{
@@ -53,6 +54,9 @@ if (window.WebSocket) {
                                 option4.series[0].data[2].value = obj.TagFieldValue[6].V;
                                 option4.series[1].data[2].value = obj.TagFieldValue[7].V;
                                 myChart4.setOption(option4,true);
+
+                                // 网络拓扑图-plc状态
+
                                 // console.log('not same');
                             } else {
                                 // console.log('same');
@@ -100,17 +104,30 @@ if (window.WebSocket) {
     }
 
     // 获取plc&swtich 在线率 + 动环参数
-    function plcStatus(){
+    function page1Info(){
         // 标签点获取
-        plcStat = '{\
+        wsStr = '{\
             "Request":"RDB_GetTagFieldValue",\
             "TagFieldName":[\
                 "PLC_online.F_CV","SWITCH_online.F_CV",\
                 "Param1.F_CV","Param2.F_CV","Param3.F_CV",\
-                "Param4.F_CV","Param5.F_CV","Param6.F_CV"\
+                "Param4.F_CV","Param5.F_CV","Param6.F_CV",\
             ]\
         }'
-        ws.send(plcStat)
+        ws.send(wsStr)
+    }
+
+    //网络拓扑图-plc状体
+    function plcStatus(){
+        // 标签点获取
+        wsStr = '{\
+            "Request":"RDB_GetTagFieldValue",\
+            "TagFieldName":[\
+                "PLC1_online.F_CV","PLC2_online.F_CV","PLC3_online.F_CV","PLC4_online.F_CV","PLC5_online.F_CV",\
+                "PLC6_online.F_CV","PLC7_online.F_CV","PLC8_online.F_CV","PLC9_online.F_CV","PLC10_online.F_CV",\
+            ]\
+        }'
+        ws.send(wsStr)
     }
 
     // 执行连接

@@ -26,7 +26,8 @@ app.get('/public/homePage.html',tokenAuth,function(req,res){
     res.sendFile(__dirname + "/" + "public/homePage.html")
 })
 
-// 配置解析表单数据的中间件,注意这个中间件智能解析application/x-www-form-urlencoded样式中间件
+// 配置解析表单数据的中间件
+// 注意这个中间件智能解析application/x-www-form-urlencoded样式中间件
 app.use(express.urlencoded({extended:false}))
 
 // 一定要在路由之前封装res.cc函数
@@ -60,7 +61,7 @@ app.use((err,req,res,next) =>{
     if(err instanceof joi.ValidationError) return res.cc(err)
     // 身份认证失败后的错误
     if(err.name == 'UnauthorizedError') return res.cc('身份认证失败')
-    // 未知错误
+
     res.cc(err)
 })
 
