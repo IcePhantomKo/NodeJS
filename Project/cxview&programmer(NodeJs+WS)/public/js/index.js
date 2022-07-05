@@ -21,15 +21,9 @@ function botNavChange(obj){
             $("body").css("background-image","url(./img/背景.jpg)")
         }
     }
-    //选中CX-View弹窗界面时的动作,现为固定死
-    if(equNum == "5"||equNum=="6"||equNum == "8"){
-        $(".Page3").css("display","block");
-        // $("#navImg4").css("background-image","url(./img/选中/"+imgList[3]+")");
-    }else{
         var c = $(".Page"+(equNum-1));
         $(c).css("display","block");
         $("#"+obj.id).css("background-image","url(./img/选中/"+imgList[equNum-1]+")");
-    }  
 
     switch(equNum){
         case '1':
@@ -67,23 +61,6 @@ function botNavChange(obj){
                     }
                 }
             })
-
-            // WebSocket 请求
-
-            // function GetValue(){
-            //     test = '{\
-            //         "Request":"RDB_GetTagFieldValue",\
-            //         "TagFieldName":[\
-            //             "switch1_online"\
-            //         ]\
-            //     }';
-            //     ws.send(test);
-            // }
-            // ws.onmessage=(e)=>{
-            //     console.log(e.data);
-            // }
-            // GetValue();
-
             break;
         
         // 
@@ -101,6 +78,28 @@ function botNavChange(obj){
 
 
 
+
+
+// // 主页故障率数据请求
+// function errorRate(){
+//     $.ajax({
+//         url: 'http://10.110.133.212:8000/admin/homePage',
+//         type: "post",
+//         contentType: "application/json",
+//         dataType: 'json',
+//         cache: true,
+//         async: false,
+//         beforeSend: function (XMLHttpRequest) {
+//             XMLHttpRequest.setRequestHeader("Authorization", window.localStorage.getItem('token'));
+//         },
+//         success: function (result) {
+//             console.log(result);
+//         }
+//     })       
+// }
+
+// // 进入主页运行一次
+// errorRate();
 
 
 
@@ -143,3 +142,4 @@ $(function(){
         window.OnReceive2(6,"","");
     })
 })
+

@@ -183,7 +183,8 @@ function sendData(data){
     modalStatus = firstNum.split(',');
     modalStatus2 = secNum.split(','); 
 }
-// sendData();
+//**************************传输状态信息 */
+sendData('0,1,1,1,1,1,1,1,1');
 
 // 接入信息每个柜体信息打开图标
 function findId(element){
@@ -199,8 +200,64 @@ function findId(element){
             XMLHttpRequest.setRequestHeader("Authorization", new_token);
         },
         success:function(result){
+            // 再次请求接入设备信息
+            $.ajax({
+                url:'http://10.110.133.212:8000/admin/devCon',
+                type: 'post',
+                contentType: 'application/json',
+                cache:true,
+                async:true,
+                beforeSend: function (XMLHttpRequest) {
+                    XMLHttpRequest.setRequestHeader("Authorization", new_token);
+                },
+                success:function(devRes){
+                    console.log(devRes);
+
+                    //接入设备信息数量
+                    var dataLength = devRes.message.length;
+                    var plc1_device_Num = 0;
+                    var plc2_device_Num = 0;
+                    var plc3_device_Num = 0;
+                    var device1_pos = 0;
+                    var device2_pos = 0;
+                    var device3_pos = 0;
+                    
+                    var acuImgID = element.parentNode.id;
+
+                    for(var key in modal.modalList[0].statImg){
+                        modal.modalList[0].statImg[key] = normalImg;
+                    }
+
+                    for(i = 0; i < dataLength; i++){
+                        // 查询每个plc_id下有多少个接入的设备
+                        switch(devRes.message[i].plc_id){
+                            case 1: plc1_device_Num++;break;
+                            case 2: plc2_device_Num++;break;
+                            case 3: plc3_device_Num++;break;
+                        }
+                    }
+                    //出现的位置
+                    device2_pos = plc1_device_Num;
+                    device3_pos = device2_pos + plc2_device_Num;
+
+                    switch(acuImgID){
+                        case 'ACU1':devData(plc1_device_Num,device1_pos);break;
+                        case 'ACU2':devData(plc2_device_Num,device2_pos);break;
+                        case 'ACU3':devData(plc3_device_Num,device3_pos);break;
+                    }
+                    function devData(param,pos){
+                        for(i=0;i<param;i++){
+                            modal.modalList[0].dvcName[i] = devRes.message[pos+i].device_name;
+                            modal.modalList[0].dvcCount[i] = devRes.message[pos+i].device_count;
+                            modal.modalList[0].dvcAccess[i] = devRes.message[pos+i].access_way;
+                            modal.modalList[0].dvcIndex[i] = devRes.message[pos+i].device_index;
+                            modal.modalList[0].dvcPos[i] = devRes.message[pos+i].device_position;
+                        }
+                    }
+                }
+            })
+
             console.log(result.message);
-            
             // 选取 ACU 详情页小图标id
             var acuImgID = element.parentNode.id;
             // 初始化所有状态图片
@@ -235,32 +292,10 @@ function findId(element){
                 case 'ACU3':modalData(plc3_modal_Num,2,plc3_pos);break;
             }
 
-        //         dev_res = devResp;
-        //         // alert(JSON.stringify(dev_res));
-        //         //接入设备信息数量
-        //         var dataLength = devResp.data.length;
-        //         for(i = 1; i < dataLength+1; i++){
-        //             this["plc" + i + "_device_Num"] = 0;
-        //             this["device" + i + "_pos"] = 0;
-        //             // 查询每个plc_id下有多少个接入的设备
-        //             switch(devResp.data[i-1].plc_id){
-        //                 case 1: plc1_device_Num++;break;
-        //                 case 2: plc2_device_Num++;break;
-        //                 case 3: plc3_device_Num++;break;
-        //             }
-        //         }
-        //         //出现的位置
-                // device2_pos = plc1_device_Num;
-                // device3_pos = device2_pos + plc2_device_Num;
-
-                // switch(acuImgID){
-                //     case 'ACU1':devData(plc1_device_Num,device1_pos);break;
-                //     case 'ACU2':devData(plc2_device_Num,device2_pos);break;
-                //     case 'ACU3':devData(plc3_device_Num,device3_pos);break;
-                // }
-        //     }))
             $(".modal").css("display","block");
         // }
+
+
         //modal数据传输函数 param为plc_modal数量 imgNum为图片状态切换状态数字 pos为plc_id位置
         function modalData(param,imgNum,pos){
             for(i=0;i<param;i++){
@@ -269,39 +304,27 @@ function findId(element){
                 modal.modalList[0].slotNum[i] = result.message[pos+i].slot_unit_id;
                 modal.modalList[0].modInfo[i] = result.message[pos+i].plc_id;
             }
-            // switch(modalStatus[imgNum]){
-            //     case '0':modal.modalList[0].statImg.img0 = newNormal; break;
-            //     case '1':modal.modalList[0].statImg.img0 = errorImg; break;
-            //     case '2':modal.modalList[0].statImg.img1 = errorImg; break;
-            //     case '3':modal.modalList[0].statImg.img2 = errorImg; break
-            //     case '4':modal.modalList[0].statImg.img3 = errorImg; break;
-            //     case '5':modal.modalList[0].statImg.img4 = errorImg; break;
-            //     case '6':modal.modalList[0].statImg.img5 = errorImg; break;
-            // }
-            // switch(modalStatus2[imgNum]){
-            //     case '1':modal.modalList[0].statImg.img0 = errorImg; break;
-            //     case '2':modal.modalList[0].statImg.img1 = errorImg; break;
-            //     case '3':modal.modalList[0].statImg.img2 = errorImg; break
-            //     case '4':modal.modalList[0].statImg.img3 = errorImg; break;
-            //     case '5':modal.modalList[0].statImg.img4 = errorImg; break;
-            //     case '6':modal.modalList[0].statImg.img5 = errorImg; break;
-            // }
-        }
-        // function devData(param,pos){
-        //     for(i=0;i<param;i++){
-        //         modal.modalList[0].dvcName[i] = dev_res.data[pos+i].device_name;
-        //         modal.modalList[0].dvcCount[i] = dev_res.data[pos+i].device_count;
-        //         modal.modalList[0].dvcAccess[i] = dev_res.data[pos+i].access_way;
-        //         modal.modalList[0].dvcIndex[i] = dev_res.data[pos+i].device_index;
-        //         modal.modalList[0].dvcPos[i] = dev_res.data[pos+i].device_position;
-        //     }
-        // }
+            switch(modalStatus[imgNum]){
+                case '0':modal.modalList[0].statImg.img0 = newNormal; break;
+                case '1':modal.modalList[0].statImg.img0 = errorImg; break;
+                case '2':modal.modalList[0].statImg.img1 = errorImg; break;
+                case '3':modal.modalList[0].statImg.img2 = errorImg; break
+                case '4':modal.modalList[0].statImg.img3 = errorImg; break;
+                case '5':modal.modalList[0].statImg.img4 = errorImg; break;
+                case '6':modal.modalList[0].statImg.img5 = errorImg; break;
+            }
+            switch(modalStatus2[imgNum]){
+                case '1':modal.modalList[0].statImg.img0 = errorImg; break;
+                case '2':modal.modalList[0].statImg.img1 = errorImg; break;
+                case '3':modal.modalList[0].statImg.img2 = errorImg; break
+                case '4':modal.modalList[0].statImg.img3 = errorImg; break;
+                case '5':modal.modalList[0].statImg.img4 = errorImg; break;
+                case '6':modal.modalList[0].statImg.img5 = errorImg; break;
+            }
+            }
         }
     })
 }
-
-
-
 
 // modal界面关闭
 $("#close").click(function(){

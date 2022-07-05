@@ -18,8 +18,7 @@ adRouter.post('/topology',adminHandler.topoInfo)
 adRouter.post('/modChal',adminHandler.modChalInfo)
 
 // 接入设备接口
-// TODO:
-// adRouter.post('/devCon',adminHandler.devConInfo)
+adRouter.post('/devCon',adminHandler.devConInfo)
 
 // ping 接口
 adRouter.post('/pings',adminHandler.Pings)

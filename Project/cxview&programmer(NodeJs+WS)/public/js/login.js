@@ -15,13 +15,14 @@ function loginBtn(){
                 url: my_ip + '/admin/homePage',
                 type: "post",
                 contentType: "application/json",
-                // dataType: 'json',
+                dataType: 'json',
                 cache: true,
                 async: false,
                 beforeSend: function (XMLHttpRequest) {
                     XMLHttpRequest.setRequestHeader("Authorization", data.token);
                 },
                 success: function (result) {
+                    console.log(result);
                     if(result.status == 1){
                         location.href = 'http://10.110.133.212:8000/public/homePage.html'
                     }else{

@@ -20,6 +20,13 @@ if (window.WebSocket) {
             // 发送
             this.ws.send(loginInfo);
 
+            // setInterval(()=>{
+            //     GetAlarm();
+            //     page1Info()
+            // },1000)
+            page1Info()
+            GetAlarm()
+            // plcStatus()
         }
 
         this.ws.onclose = (e) =>{
@@ -28,7 +35,10 @@ if (window.WebSocket) {
 
         this.ws.onmessage = (e) =>
 			{
+                // console.log(e.data);
+
                 var obj = JSON.parse(e.data);
+                console.log(obj);
                 switch(obj.Response){
                     // PLC & Switch 在线率 + 系统参数
                     case "RDB_GetTagFieldValue":
@@ -41,18 +51,31 @@ if (window.WebSocket) {
                                 temp = objS;
                                 objS = [];
                                 // plc在线率
-                                $('#plcOnline').html(obj.TagFieldValue[0].V);
-                                $('#plcOffline').html((200 - obj.TagFieldValue[0].V));
+                                // plc 正常的个数
+                                $('#plcOnline').html(10 - obj.TagFieldValue[6].V);
+                                // plc 故障个数
+                                $('#plcOffline').html((obj.TagFieldValue[6].V));
+
+                                // 正常个数
+                                option2.series[0].data[0].value = 10- obj.TagFieldValue[6].V;
+                                // 故障个数
+                                option2.series[0].data[1].value = obj.TagFieldValue[6].V;
+                                // 正常运行百分比
+                                option2.series[0].data[2].percent = (10 - obj.TagFieldValue[6].V)/10
+                                
+                                myChart2.setOption(option2,true);
+
+
                                 // 交换机在线率
                                 $('#switchOnline').html(obj.TagFieldValue[1].V);
                                 $('#switchOffline').html((200 - obj.TagFieldValue[1].V));
                                 // 系统参数
-                                option4.series[0].data[0].value = obj.TagFieldValue[2].V;
-                                option4.series[1].data[0].value = obj.TagFieldValue[3].V;
-                                option4.series[0].data[1].value = obj.TagFieldValue[4].V;
-                                option4.series[1].data[1].value = obj.TagFieldValue[5].V;
-                                option4.series[0].data[2].value = obj.TagFieldValue[6].V;
-                                option4.series[1].data[2].value = obj.TagFieldValue[7].V;
+                                option4.series[0].data[0].value = obj.TagFieldValue[0].V;
+                                option4.series[1].data[0].value = obj.TagFieldValue[1].V;
+                                option4.series[0].data[1].value = obj.TagFieldValue[2].V;
+                                option4.series[1].data[1].value = obj.TagFieldValue[3].V;
+                                option4.series[0].data[2].value = obj.TagFieldValue[4].V;
+                                option4.series[1].data[2].value = obj.TagFieldValue[5].V;
                                 myChart4.setOption(option4,true);
 
                                 // 网络拓扑图-plc状态
@@ -109,9 +132,8 @@ if (window.WebSocket) {
         wsStr = '{\
             "Request":"RDB_GetTagFieldValue",\
             "TagFieldName":[\
-                "PLC_online.F_CV","SWITCH_online.F_CV",\
                 "Param1.F_CV","Param2.F_CV","Param3.F_CV",\
-                "Param4.F_CV","Param5.F_CV","Param6.F_CV",\
+                "Param4.F_CV","Param5.F_CV","Param6.F_CV","Param7.F_CV",\
             ]\
         }'
         ws.send(wsStr)
@@ -119,14 +141,26 @@ if (window.WebSocket) {
 
     //网络拓扑图-plc状体
     function plcStatus(){
+        // ********************************* 拼接 *********************************************
+        var test = '';
+        for (i = 1; i < 23; i++) {
+            if (i <= 19) {
+                test += '"PLC1_stat' + i + '.F_CV",'
+            } else {
+                test += '"PLC1_stat' + i + '.A_CV",'
+            }
+        }
+        wsStr = '{ "Request":"RDB_GetTagFieldValue","TagFieldName":[' + test +']}'
+        // ************************************************************************************
+
         // 标签点获取
-        wsStr = '{\
-            "Request":"RDB_GetTagFieldValue",\
-            "TagFieldName":[\
-                "PLC1_online.F_CV","PLC2_online.F_CV","PLC3_online.F_CV","PLC4_online.F_CV","PLC5_online.F_CV",\
-                "PLC6_online.F_CV","PLC7_online.F_CV","PLC8_online.F_CV","PLC9_online.F_CV","PLC10_online.F_CV",\
-            ]\
-        }'
+        // wsStr = '{\
+        //     "Request":"RDB_GetTagFieldValue",\
+        //     "TagFieldName":[\
+        //         "PLC1_online.F_CV","PLC2_online.F_CV","PLC3_online.F_CV","PLC4_online.F_CV","PLC5_online.F_CV",\
+        //         "PLC6_online.F_CV","PLC7_online.F_CV","PLC8_online.F_CV","PLC9_online.F_CV","PLC10_online.F_CV",\
+        //     ]\
+        // }'
         ws.send(wsStr)
     }
 

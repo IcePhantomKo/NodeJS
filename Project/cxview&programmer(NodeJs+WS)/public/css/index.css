@@ -6,7 +6,7 @@ body {
     color: #5D5F63;
     background-color: black;
     background-image: url("../img/背景.jpg");
-    /* background-image: url(../img/weixingMap3.png); */
+    background-image: url(../img/weixingMap3.png);
     background-repeat: no-repeat;
     background-size: 100%;
     font-family: 'Open Sans', sans-serif;
@@ -257,7 +257,7 @@ body {
     position: absolute;
     height: 80%;
     width: 100%;
-    display: none;
+    display: block;
     /* background-color: #0aeec8; */
 }
 .Title {

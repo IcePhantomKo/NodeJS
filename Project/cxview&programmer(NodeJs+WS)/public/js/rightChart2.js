@@ -1,7 +1,32 @@
+// 故障率请求方法
+function requestError() {
+    $.ajax({
+        url: 'http://10.110.133.212:8000/admin/homePage',
+        type: "post",
+        contentType: "application/json",
+        dataType: 'json',
+        cache: true,
+        async: false,
+        beforeSend: function (XMLHttpRequest) {
+            XMLHttpRequest.setRequestHeader(
+                "Authorization",
+                window.localStorage.getItem('token')
+            );
+        },
+        success: function (result) {
+            errorRate(result.eachValue);
+        }
+    })
+}
+
+// 进入系统请求一次故障率
+// setInterval(()=>{
+//     requestError();
+// },1000)
+requestError();
+
 //故障率
-function errorOption(obj) {
-    var timeSpanList = new Array();
-    timeSpanList = ["7", "15", "50"];
+function errorOption(obj) {    
     var a = document.querySelector('#rightChart2TopOption').querySelectorAll('div');
     for (i = 0; i < a.length; i++) {
         a[i].className = "";
@@ -11,8 +36,20 @@ function errorOption(obj) {
 
     obj.className = "option_current";
     $("#rightChart2-" + equNum).css("display", "block");
-    //向CX-view 传输命令
-    window.OnReceive2(0,"PicUdf.SettingTimeSpanFromHtml",timeSpanList[equNum - 1]);
+
+    switch(equNum){
+        case '1':
+            requestError();
+            break;
+        
+        case '2':
+            console.log('15 days');
+            break;
+        
+        case '3': 
+            console.log('50 days');
+            break;
+    }
     $(window).trigger('resize');
 }
 

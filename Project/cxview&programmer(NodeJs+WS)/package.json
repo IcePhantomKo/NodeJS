@@ -20,6 +20,7 @@
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
-    "nodejs-traceroute": "^1.2.0"
+    "nodejs-traceroute": "^1.2.0",
+    "nodemon": "^2.0.18"
   }
 }

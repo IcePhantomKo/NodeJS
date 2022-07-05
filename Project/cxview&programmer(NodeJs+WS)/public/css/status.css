@@ -3,7 +3,7 @@
     position: absolute;
     width: 100%;
     height: 730px;
-    display: block;
+    display: none;
 }
 /* 左侧导航栏 */
 .statNavi{
