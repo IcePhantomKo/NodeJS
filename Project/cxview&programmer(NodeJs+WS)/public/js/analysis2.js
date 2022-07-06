@@ -16,9 +16,9 @@ function MostErrorType(data){
       source: [
         //[颜色范围,发生数量,名称]
         ['score', 'amount', 'product'],
-        [data.Data[2].Count,data.Data[2].Count,data.Data[2].Name],
-        [data.Data[1].Count,data.Data[1].Count,data.Data[1].Name],
-        [data.Data[0].Count,data.Data[0].Count,data.Data[0].Name],
+        [data[2].COUNT,data[2].COUNT,data[2].ErrorType],
+        [data[1].COUNT,data[1].COUNT,data[1].ErrorType],
+        [data[0].COUNT,data[0].COUNT,data[0].ErrorType],
       ]
     },
     grid: {
@@ -47,7 +47,7 @@ function MostErrorType(data){
       orient: 'horizontal',
       left: 'center',
       min: 0,
-      max: data.Data[0].Count,
+      max: data[0].COUNT,
       text: ['高', '低'],
       textStyle:{
         color:'white'

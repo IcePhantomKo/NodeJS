@@ -1,5 +1,4 @@
 function MostErrorPLC(data){
-  // alert(JSON.stringify(data));
   var myChart8 = echarts.init(document.getElementById('analysis1'));
   var option8 = {
     title:{
@@ -16,10 +15,10 @@ function MostErrorPLC(data){
       [
         //[颜色范围,发生数量,名称]
         ['score', 'amount', 'product'],
-        [data.Data[0].Count,data.Data[0].Count,data.Data[0].Name],
-        [data.Data[1].Count,data.Data[1].Count,data.Data[1].Name],
-        [data.Data[2].Count,data.Data[2].Count,data.Data[2].Name],
-        [data.Data[3].Count,data.Data[3].Count,data.Data[3].Name],
+        [data[0].COUNT,data[0].COUNT,data[0].positionname],
+        [data[1].COUNT,data[1].COUNT,data[1].positionname],
+        [data[2].COUNT,data[2].COUNT,data[2].positionname],
+        [data[3].COUNT,data[3].COUNT,data[3].positionname]
       ]
     },
     grid: {

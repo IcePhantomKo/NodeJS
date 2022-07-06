@@ -1,5 +1,4 @@
 function MostPowerOffPLC(data) {
-    // alert(JSON.stringify(data));
     var myChart13 = echarts.init(document.getElementById('analysis6'));
     var option13 = {
         title: {

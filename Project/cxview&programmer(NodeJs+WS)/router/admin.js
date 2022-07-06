@@ -20,6 +20,9 @@ adRouter.post('/modChal',adminHandler.modChalInfo)
 // 接入设备接口
 adRouter.post('/devCon',adminHandler.devConInfo)
 
+// 智能分析接口
+adRouter.post('/analyInfo',adminHandler.analyInfo)
+
 // ping 接口
 adRouter.post('/pings',adminHandler.Pings)
 

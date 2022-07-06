@@ -71,41 +71,36 @@ function botNavChange(obj){
         // POST('/admin/modChal')
         // POST('/admin/devCon')
             break;
+
+        case '7':
+            // TODO: 智能分析请求
+            $.ajax({
+                url: 'http://10.110.133.212:8000/admin/analyInfo',
+                type: 'post',
+                contentType: 'application/json',
+                cache:true,
+                async:false,
+                beforeSend: function (XMLHttpRequest) {
+                    XMLHttpRequest.setRequestHeader("Authorization", window.localStorage.getItem('token'));
+                },
+                success:function(result){
+                    MostErrorPLC(result.mostErrorPLC);
+                    MostErrorType(result.mostErrorType);
+                    MostErrorUnit(result.mostErrorUnit);
+                    MostFatalErrorType(result.mostFatalErrorType);
+                    MostNonFatalErrorType(result.mostNonFatalErrorType);
+                }
+            })
+            break;
+
+        case '8':
+            // TODO: 打开本地文件夹
+            alert('暂不可用!')
+            break;
     }
     
     $(window).trigger('resize'); 
 }
-
-
-
-
-
-// // 主页故障率数据请求
-// function errorRate(){
-//     $.ajax({
-//         url: 'http://10.110.133.212:8000/admin/homePage',
-//         type: "post",
-//         contentType: "application/json",
-//         dataType: 'json',
-//         cache: true,
-//         async: false,
-//         beforeSend: function (XMLHttpRequest) {
-//             XMLHttpRequest.setRequestHeader("Authorization", window.localStorage.getItem('token'));
-//         },
-//         success: function (result) {
-//             console.log(result);
-//         }
-//     })       
-// }
-
-// // 进入主页运行一次
-// errorRate();
-
-
-
-
-
-
 
 // ------------------------------------------------------------------------------------------
 $(function(){
@@ -136,10 +131,6 @@ $(function(){
     //一键巡查
     $("#quickFind").click(function(){
         window.OnReceive2(5,"","");
-    })
-    //打开文件夹
-    $("#fileOpen").click(function(){
-        window.OnReceive2(6,"","");
     })
 })
 

@@ -146,6 +146,88 @@ exports.devConInfo = (req,res) =>{
     })
 }
 
+// 智能分析接口 post('/admin/analysis')
+exports.analyInfo = (req,res) =>{
+    var SelectStringArray = new Array();
+
+    const analyInfo = req.body
+
+    SelectStringArray[0] = "SELECT t2.positionname,COUNT( * )AS COUNT,LEFT (t1.Tagname, 5 ) AS PLCNAME"
+                            + " FROM alarmrecord t1 LEFT JOIN plcinfo  t2 ON t2.plctagname = LEFT ( t1.Tagname, 5 )"
+                            + " WHERE t1.AlarmSourceType = 2"
+                            + " AND t2.PositionName IS NOT NULL"
+                            + " GROUP BY PLCNAME"
+                            + " ORDER BY COUNT(*)";
+    
+    SelectStringArray[1] = "SELECT t2.ErrorType,count(*) AS COUNT ,t2.Description FROM `alarmrecord` t1"
+                            + " LEFT JOIN errorsummary t2 ON RIGHT ( t1.TagName, 7 ) = t2.errorBit"
+                            + " WHERE t1.AlarmSourceType = 2"
+                            + " AND ErrorType IS NOT NULL"
+                            + " GROUP BY t2.errortype "
+                            + " ORDER BY COUNT(*) DESC";
+
+    SelectStringArray[2] = "SELECT slot_unit_name,COUNT(1) AS COUNT,TagAndFieldName,"
+                            + " TagDescription,plc_id,slot_unit_name,slot_id,rack_type FROM"
+                            + " (SELECT * FROM eventrecord t1 LEFT JOIN plcslotinfo t2 on t1.SetValue= t2.slot_id) t3"
+                            + " WHERE Mid(t3.tagandfieldname,6,5) = 'A404.' OR Mid(t3.tagandfieldname,6,5) = 'A408.'"
+                            + " GROUP BY slot_unit_name";
+
+    SelectStringArray[3] = "SELECT t2.Description,count( * ) AS COUNT ,t2.ErrorType FROM `alarmrecord` t1"
+                            +" LEFT JOIN errorsummary t2 ON RIGHT ( t1.TagName, 7 ) = t2.errorBit"
+                            + " WHERE t1.AlarmSourceType = 2 AND t2.ErrorType = '致命'"
+                            + " GROUP BY t2.Description"
+                            + " ORDER BY COUNT(*) DESC"
+                            + " LIMIT 4";
+
+    SelectStringArray[4] = "SELECT t2.Description,count( * ) AS COUNT ,t2.ErrorType FROM `alarmrecord` t1"
+                            +" LEFT JOIN errorsummary t2 ON RIGHT ( t1.TagName, 7 ) = t2.errorBit"
+                            + " WHERE t1.AlarmSourceType = 2 AND t2.ErrorType = '非致命'"
+                            + " GROUP BY t2.Description"
+                            + " ORDER BY COUNT(*) DESC"
+                            + " LIMIT 4";
+
+    SelectStringArray[5] = "SELECT t2.Description,count( * ) AS COUNT,t2.ErrorType FROM	`alarmrecord` t1"
+                            +" LEFT JOIN errorsummary t2 ON RIGHT ( t1.TagName, 7 ) = t2.errorBit"
+                            + " WHERE t1.AlarmSourceType = 2 AND t2.ErrorType = '非致命'"
+                            + " GROUP BY t2.Description"
+                            + " ORDER BY COUNT(*) DESC"
+                            + " LIMIT 4";
+    
+    db.query(SelectStringArray[0],analyInfo,(err,mostErrorPLC) => {
+        if(err) return res.cc(err)
+
+        db.query(SelectStringArray[1],analyInfo,(err,mostErrorType) => {
+            if(err) return res.cc(err)
+
+            db.query(SelectStringArray[2],analyInfo,(err,mostErrorUnit) => {
+                if(err) return res.cc(err)
+
+                db.query(SelectStringArray[3],analyInfo,(err,mostFatalErrorType) => {
+                    if(err) return res.cc(err)
+        
+                    db.query(SelectStringArray[4],analyInfo,(err,mostNonFatalErrorType) => {
+                        if(err) return res.cc(err)
+            
+                        db.query(SelectStringArray[5],analyInfo,(err,mostPowerOffPLC) => {
+                            if(err) return res.cc(err)
+                            
+                            res.send({
+                                msg:'智能分析请求成功',
+                                mostErrorPLC: mostErrorPLC,
+                                mostErrorType: mostErrorType,
+                                mostErrorUnit: mostErrorUnit,
+                                mostFatalErrorType: mostFatalErrorType,
+                                mostNonFatalErrorType: mostNonFatalErrorType,
+                                mostPowerOffPLC: mostPowerOffPLC
+                            })
+                        })    
+                    })
+                })               
+            })
+        })
+    })
+}
+
 // ping 接口 post('/admin/pings')
 exports.Pings = (req,res) =>{
     const childProcess = require('child_process')
