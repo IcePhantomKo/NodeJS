@@ -6,24 +6,28 @@ exports.login = (req,res) => {
     // 故障率数据接口
     const totalInfo = req.body
 
+    // 定义请求的故障天数变量
+    var new_timespan = req.headers.timespan
+
     // 故障总数
     const totalStr = "SELECT LEFT(t1.starttime,10) AS START_TIME,t1.endtime,CURDATE(),"
-                    + " DATE_SUB(CURDATE(),INTERVAL 7 DAY),count(1) AS COUNT"
+                    + " DATE_SUB(CURDATE(),INTERVAL " + new_timespan +" DAY),count(1) AS COUNT"
                     + " FROM `alarmrecord` t1" 
                     + " WHERE AlarmSourceType = 2" 
                     + " AND EndTime IS NOT NULL" 
-                    + " AND StartTime >= DATE_SUB(CURDATE(),INTERVAL 7 DAY);"
+                    + " AND StartTime >= DATE_SUB(CURDATE(),INTERVAL " + new_timespan + " DAY);"
     
     // 每一个故障
     const eachStr = "SELECT LEFT(t1.starttime,10) AS START_TIME,"
                     + " LEFT(CURDATE(),10) AS CUR_DATE," 
-                    + " LEFT(DATE_SUB(CURDATE(),INTERVAL 7 DAY),10) AS DATE_SUB," 
+                    + " LEFT(DATE_SUB(CURDATE(),INTERVAL " + new_timespan + " DAY),10) AS DATE_SUB," 
                     + " count(1) AS COUNT"
                     + " FROM `alarmrecord` t1" 							
                     + " WHERE AlarmSourceType = 2 AND EndTime IS NOT NULL"
-                    + " AND StartTime >= DATE_SUB(CURDATE(),INTERVAL 7 DAY)"
+                    + " AND StartTime >= DATE_SUB(CURDATE(),INTERVAL " + new_timespan + " DAY)"
                     + " GROUP BY Left(t1.starttime,10);";
 
+    // 数据库查询语句
     db.query(totalStr,totalInfo,(err,result1) =>{
         if(err) throw err
 
@@ -54,9 +58,9 @@ exports.login = (req,res) => {
             // 故障率列表
             var newData = [];
 
-            for(i = 0; i < 7; i++){
+            for(i = 0; i < new_timespan; i++){
                 newData.push('0');
-                if(i!=6){
+                if(i != new_timespan - 1){
                     newDate += dateAddDays(startdate,i) + ",";
                 }else{
                     newDate += dateAddDays(startdate,i);
@@ -68,7 +72,7 @@ exports.login = (req,res) => {
             // 参数列表
 
             for(i=0;i<result2.length;i++){
-                for(j=0;j<7;j++){
+                for(j=0;j<new_timespan;j++){
                     if(result2[i].START_TIME == newDate[j]){
                         newData.splice(j, 1, (result2[i].COUNT/result1[0].COUNT).toFixed(2)*100 + "")
                     }else{
@@ -93,6 +97,7 @@ exports.login = (req,res) => {
     })
     // res.sendFile(path.join(__dirname,"../public/homePage.html"))
 }
+
 // 网络拓扑图接口 post('/admin/topology')
 exports.topoInfo = (req,res) =>{
     const topoinfo = req.body

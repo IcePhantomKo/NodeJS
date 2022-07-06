@@ -1,5 +1,8 @@
+// 故障率天数list
+var errorList = ['7','15','50']
+
 // 故障率请求方法
-function requestError() {
+function requestError(timeSpan) {
     $.ajax({
         url: 'http://10.110.133.212:8000/admin/homePage',
         type: "post",
@@ -9,9 +12,12 @@ function requestError() {
         async: false,
         beforeSend: function (XMLHttpRequest) {
             XMLHttpRequest.setRequestHeader(
-                "Authorization",
-                window.localStorage.getItem('token')
+                "Authorization",window.localStorage.getItem('token')
             );
+        },
+        headers:{
+            // 故障率天数放在header里请求到服务器
+            'timeSpan': timeSpan
         },
         success: function (result) {
             errorRate(result.eachValue);
@@ -23,7 +29,7 @@ function requestError() {
 // setInterval(()=>{
 //     requestError();
 // },1000)
-requestError();
+requestError(errorList[0]);
 
 //故障率
 function errorOption(obj) {    
@@ -39,15 +45,18 @@ function errorOption(obj) {
 
     switch(equNum){
         case '1':
-            requestError();
+            // 天数 7 故障率获取函数
+            requestError(errorList[0]);
             break;
         
         case '2':
-            console.log('15 days');
+            // 天数 15 故障率获取函数
+            requestError(errorList[1]);
             break;
         
         case '3': 
-            console.log('50 days');
+            // 天数 50 故障率获取函数
+            requestError(errorList[2]);
             break;
     }
     $(window).trigger('resize');
@@ -62,15 +71,15 @@ function errorRate(data) {
     var thirtyData = new Array();
     var thirtyDate = new Array();
 
-    for (i = 0; i < 7; i++) {
+    for (i = 0; i < errorList[0]; i++) {
         sevenDate.push(data.date[i]);
         sevenData.push(data.data[i]);
     }
-    for (i = 0; i < 15; i++) {
+    for (i = 0; i < errorList[1]; i++) {
         fifteenDate.push(data.date[i]);
         fifteenData.push(data.data[i]);
     }
-    for (i = 0; i < 50; i++) {
+    for (i = 0; i < errorList[2]; i++) {
         thirtyDate.push(data.date[i]);
         thirtyData.push(data.data[i]);
     }
