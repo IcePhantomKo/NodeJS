@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover">
+        <script src="https://jsmpeg.com/jsmpeg.min.js" charset="utf-8"></script>
+        <title>播放rtsp</title>
+    </head>
+    <body>
+        <canvas id="canvas" style="width: 1000px; height: 600px;"></canvas>
+    </body>
+    <!-- <script src="./index.js"></script> -->
+    <script>
+        // rtsp://<用户名>:<密码>@<IP地址>:<端口>/cam/realmonitor?channel=1&subtype=0
+        var rtsp = 'rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mp4'
+        // var rtsp = 'rtsp://admin:omron2022@192.168.2.188:554/cam/realmonitor?channel=1&subtype=0'
+        window.onload = () => {
+            // 将rtsp视频流地址进行btoa处理一下
+            new JSMpeg.Player(
+                "ws://10.110.133.212:1234/rtsp?url=" + btoa(rtsp),
+                {canvas: document.getElementById("canvas")}
+            )
+        }
+    </script>
+</html>
