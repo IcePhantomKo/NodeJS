@@ -124,13 +124,5 @@ $(function(){
     $("#eui6").click(function(){
         window.OnReceive2(3,"","");
     });
-    //报警信息
-    $("#erroReport").click(function(){
-        window.OnReceive2(4,"","");
-    })
-    //一键巡查
-    $("#quickFind").click(function(){
-        window.OnReceive2(5,"","");
-    })
 })
 

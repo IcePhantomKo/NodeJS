@@ -1,9 +1,15 @@
-const path = require('path');
 const db = require('../db/device')
 
 // 跳转主页接口 post('/admin/homePage')
 exports.login = (req,res) => {
-    // 故障率数据接口
+    res.send({
+        status:1
+    })
+    // res.sendFile(path.join(__dirname,"../public/homePage.html"))
+}
+
+// 故障率接口 post('/admin/errorRate)
+exports.errorRate = (req,res) =>{
     const totalInfo = req.body
 
     // 定义请求的故障天数变量
@@ -16,7 +22,7 @@ exports.login = (req,res) => {
                     + " WHERE AlarmSourceType = 2" 
                     + " AND EndTime IS NOT NULL" 
                     + " AND StartTime >= DATE_SUB(CURDATE(),INTERVAL " + new_timespan + " DAY);"
-    
+
     // 每一个故障
     const eachStr = "SELECT LEFT(t1.starttime,10) AS START_TIME,"
                     + " LEFT(CURDATE(),10) AS CUR_DATE," 
@@ -95,7 +101,6 @@ exports.login = (req,res) => {
             })
         })
     })
-    // res.sendFile(path.join(__dirname,"../public/homePage.html"))
 }
 
 // 网络拓扑图接口 post('/admin/topology')

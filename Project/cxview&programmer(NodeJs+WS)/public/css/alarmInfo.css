@@ -1,0 +1,30 @@
+.alarmInfo{
+    position: absolute;
+    width: 94%;
+    height: 75%;
+    margin-left: 3%;
+    margin-top: 1%;
+    display: none;
+    /* background-color: #17e6ff; */
+    border: 1px solid white;
+}
+
+#alarmTable{
+    position: relative;
+    width: 98%;
+    height: 92%;
+    margin: 1%;
+    /* background-color: antiquewhite; */
+}
+
+#alarmTable table{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border: 1px solid white;
+    scroll-behavior: auto;
+}
+#alarmTabl table th{
+    position: relative;
+    height: 10%;
+}

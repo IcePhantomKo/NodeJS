@@ -16,12 +16,17 @@
             @import url(./css/analysis.css);
             @import url(./css/weather.css);
             @import url(./css/map.css);
+            @import url(./css/alarmInfo.css);
         </style>
+        <!-- 引入 layui.js -->
+        <script src="//unpkg.com/layui@2.6.8/dist/layui.js"></script>   
         <script src="./js/echarts.min.js"></script>
         <script src="./js/jquery.js"></script>
         <script src="./js/jquery.easyui.min.js"></script>
         <script src="./js/vue.min.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+         <!-- 引入 layui.css -->
+        <!-- <link rel="stylesheet" href="//unpkg.com/layui@2.6.8/dist/css/layui.css"> -->
     </head>
     <body>
         <img src="./img/top1.svg">
@@ -390,8 +395,34 @@
             </div>
             <div class="statMain2"></div>
         </div>
-        <!-- 故障日志 -->
-        <!-- 一件巡查 -->
+
+
+        <!-- 报警信息 -->
+        <div class="alarmInfo Page4">
+            查询起始时间：
+            <input type="text" class="layui-input" id="test1" placeholder="start-time">
+            查询结束时间：
+            <input type="text" class="layui-input" id="test2" placeholder="end-time">
+            <button type="button" class="layui-btn" id="alarmBtn" onclick="alarmSearch()">搜索</button>
+            <button type="button" class="layui-btn">导出</button>
+            <!-- 报警表格 -->
+            <div id="alarmTable">
+                <table border="1">
+                    <tr>
+                        <th>标签名</th>
+                        <th>错误描述</th>
+                        <th>开始时间</th>
+                        <th>结束时间</th>
+                        <th>标志位数值</th>
+                    </tr>
+                    <tr>
+                        <td>row 2, cell 1</td>
+                        <td>row 2, cell 2</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- 一键巡查 -->
         <!-- 智能分析 -->
         <!------------------------------------- 模块选项 ---------------------------------->
         <div class="modal">
@@ -452,4 +483,5 @@
     <script src="./js/receiveData.js"></script>
     <script src="./js/modal.js"></script>
     <script src="./js/wsServer.js"></script>
+    <script src="./js/alarmInfo.js"></script>
 </html>

@@ -7,8 +7,11 @@ const adRouter = express.Router()
 const adminHandler = require('../router_handler/admin')
 const tokenAuth = require('../middleware/tokenAuth')
 
-//登录页接口
+// 登录页接口
 adRouter.post('/homePage',adminHandler.login)
+
+// 故障率接口
+adRouter.post('/errorRate',adminHandler.errorRate)
 
 // 网络拓扑图接口
 adRouter.post('/topology',adminHandler.topoInfo)
