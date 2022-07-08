@@ -6,7 +6,7 @@
     margin-top: 1%;
     display: none;
     /* background-color: #17e6ff; */
-    border: 1px solid white;
+    /* border: 1px solid white; */
 }
 
 #alarmTable{
@@ -15,16 +15,34 @@
     height: 92%;
     margin: 1%;
     /* background-color: antiquewhite; */
+    color: white;
+    overflow-y: auto;
 }
 
 #alarmTable table{
     position: relative;
     height: 100%;
     width: 100%;
-    border: 1px solid white;
+    /* border: 1px solid #11bce7; */
+    text-align:center;
     scroll-behavior: auto;
 }
-#alarmTabl table th{
-    position: relative;
-    height: 10%;
+#alarmTable td{
+    border: .5px dotted #11bce7;
+}
+#alarmTable th{
+    border-radius: 3px;
+}
+.button{
+    border-radius: 3px;
+    background-color: #11bce7;
+    color: white;
+    border: 1px solid #11bce7;
+    width: 80px;
+    margin-left: 10px;
+}
+
+.button:hover{
+    cursor: pointer;
+    background-color: #49c9e9;
 }

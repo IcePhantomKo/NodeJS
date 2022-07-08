@@ -151,6 +151,28 @@ exports.devConInfo = (req,res) =>{
     })
 }
 
+// 报警信息 - 搜索 接口 post('/admin/alarmRecord')
+exports.alarmRecord = (req,res) => {
+    // 客户端请求的开始时间
+    var reqStartTime = req.headers.alarmstarttime
+    // 客户端请求的结束时间
+    var reqEndTime = req.headers.alarmendtime
+
+    const alarmBody = req.body;
+    const sqlStr =  ' SELECT TagName, TagDescription, StartTime, EndTime, AlarmValue'
+                    + ' FROM alarmrecord'
+                    + ' WHERE StartTime >= ' + reqStartTime
+                    // ' AND StartTime <= ' + reqEndTime
+
+    db.query(sqlStr,alarmBody,(err,result) => {
+        if(err) throw err
+        res.send({
+            status:1,
+            message: result
+        })
+    })
+}
+
 // 智能分析接口 post('/admin/analysis')
 exports.analyInfo = (req,res) =>{
     var SelectStringArray = new Array();
