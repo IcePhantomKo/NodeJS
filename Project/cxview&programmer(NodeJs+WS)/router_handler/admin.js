@@ -57,6 +57,9 @@ exports.errorRate = (req,res) =>{
             
             var eachValue = {};
             // 开始时间
+            if(typeof result2[0].DATE_SUB == 'undefined'){
+                result2[0].DATE_SUB = '0'
+            }
             var startdate = result2[0].DATE_SUB;
 
             // 时间列表
@@ -74,9 +77,7 @@ exports.errorRate = (req,res) =>{
             }
 
             newDate = newDate.split(',');
-
             // 参数列表
-
             for(i=0;i<result2.length;i++){
                 for(j=0;j<new_timespan;j++){
                     if(result2[i].START_TIME == newDate[j]){
@@ -153,6 +154,7 @@ exports.devConInfo = (req,res) =>{
 
 // 报警信息 - 搜索 接口 post('/admin/alarmRecord')
 exports.alarmRecord = (req,res) => {
+
     // 客户端请求的开始时间
     var reqStartTime = req.headers.alarmstarttime
     // 客户端请求的结束时间
@@ -161,8 +163,8 @@ exports.alarmRecord = (req,res) => {
     const alarmBody = req.body;
     const sqlStr =  ' SELECT TagName, TagDescription, StartTime, EndTime, AlarmValue'
                     + ' FROM alarmrecord'
-                    + ' WHERE StartTime >= ' + reqStartTime
-                    // ' AND StartTime <= ' + reqEndTime
+                    + ' WHERE StartTime >= ' + '\'' + reqStartTime + '\''
+                    + ' AND StartTime <= ' + '\'' + reqEndTime + '\''
 
     db.query(sqlStr,alarmBody,(err,result) => {
         if(err) throw err
@@ -170,6 +172,13 @@ exports.alarmRecord = (req,res) => {
             status:1,
             message: result
         })
+    })
+}
+
+// 一键巡查
+exports.quickSearch = (req,res) => {
+    res.send({
+        msg:'hi'
     })
 }
 

@@ -1,4 +1,5 @@
-const my_ip = 'http://10.110.133.212:8000'
+const my_ip = 'http://172.20.10.2:8000'
+
 // 登录按钮事件和方法
 function loginBtn(){
     var new_account = document.getElementById('accInfo').value;
@@ -24,7 +25,8 @@ function loginBtn(){
                 success: function (result) {
                     console.log(result);
                     if(result.status == 1){
-                        location.href = 'http://10.110.133.212:8000/public/homePage.html'
+                        // location.href = 'http://10.110.133.212:8000/public/homePage.html'
+                        location.href = my_ip + '/public/homePage.html'
                     }else{
                         alert(result.message)
                     }   

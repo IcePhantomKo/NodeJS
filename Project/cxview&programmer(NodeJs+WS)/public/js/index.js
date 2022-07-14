@@ -1,3 +1,5 @@
+const my_ip = 'http://172.20.10.2:8000'
+
 // 底部导航栏
 function botNavChange(obj){
     var imgList = new Array();
@@ -45,7 +47,8 @@ function botNavChange(obj){
             // }
             var new_token = window.localStorage.getItem('token')
             $.ajax({
-                url: 'http://10.110.133.212:8000/admin/topology',
+                // url: 'http://10.110.133.212:8000/admin/topology',
+                url: my_ip + '/admin/topology',
                 type: 'post',
                 contentType: 'application/json',
                 cache:true,
@@ -72,10 +75,62 @@ function botNavChange(obj){
         // POST('/admin/devCon')
             break;
 
+
+
+
+
+
+
+
+        case '6':
+            // TODO: 一键巡查
+            function plcStatus(){
+                var test = '';
+                for (i = 1; i < 23; i++) {
+                    if (i <= 19) {
+                        test += '"PLC1_stat' + i + '.F_CV",'
+                    } else {
+                        test += '"PLC1_stat' + i + '.A_CV",'
+                    }
+                }
+                wsStr = '{ "Request":"RDB_GetTagFieldValue","TagFieldName":[' + test +']}'
+                ws.send(wsStr)
+            }
+
+            plcStatus();
+
+            ws.onmessage = (e) =>{
+                var obj = JSON.parse(e.data);
+                console.log(obj);                            
+            }
+            break;
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         case '7':
             // TODO: 智能分析请求
             $.ajax({
-                url: 'http://10.110.133.212:8000/admin/analyInfo',
+                url: my_ip + '/admin/analyInfo',
                 type: 'post',
                 contentType: 'application/json',
                 cache:true,

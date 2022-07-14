@@ -1,3 +1,6 @@
+// 全局变量地址
+const my_ip = 'http://172.20.10.2:8000'
+
 // 导入 express
 const express = require('express')
 // 创建express实例
@@ -69,5 +72,6 @@ const adRouter = require('./router/admin')
 app.use('/admin',adRouter)
 
 app.listen(8000,() =>{
-    console.log('运行在 http://10.110.133.212:8000');
+    // console.log('运行在 http://10.110.133.212:8000');
+    console.log(my_ip );
 })

@@ -1,10 +1,10 @@
 // 故障率天数list
 var errorList = ['7','15','50']
-
 // 故障率请求方法
 function requestError(timeSpan) {
     $.ajax({
-        url: 'http://10.110.133.212:8000/admin/errorRate',
+        // url: 'http://10.110.133.212:8000/admin/errorRate',
+        url: my_ip + '/admin/errorRate',
         type: "post",
         contentType: "application/json",
         dataType: 'json',
@@ -29,7 +29,7 @@ function requestError(timeSpan) {
 // setInterval(()=>{
 //     requestError();
 // },1000)
-requestError(errorList[0]);
+requestError(errorList[2]);
 
 //故障率
 function errorOption(obj) {    

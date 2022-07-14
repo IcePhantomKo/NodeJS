@@ -191,7 +191,8 @@ function findId(element){
     // 发送请求
     var new_token = window.localStorage.getItem('token')
     $.ajax({
-        url: 'http://10.110.133.212:8000/admin/modChal',
+        // url: 'http://10.110.133.212:8000/admin/modChal',
+        url: my_ip + '/admin/modChal',
         type: 'post',
         contentType: 'application/json',
         cache:true,
@@ -202,7 +203,8 @@ function findId(element){
         success:function(result){
             // 再次请求接入设备信息
             $.ajax({
-                url:'http://10.110.133.212:8000/admin/devCon',
+                // url:'http://10.110.133.212:8000/admin/devCon',
+                url: my_ip + '/admin/devCon',
                 type: 'post',
                 contentType: 'application/json',
                 cache:true,

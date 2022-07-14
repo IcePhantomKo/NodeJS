@@ -23,8 +23,11 @@ adRouter.post('/modChal',adminHandler.modChalInfo)
 // 接入设备接口
 adRouter.post('/devCon',adminHandler.devConInfo)
 
-//报警信息 - 搜索
+// 报警信息 - 搜索接口
 adRouter.post('/alarmRecord',adminHandler.alarmRecord)
+
+// 一键巡查接口
+adRouter.post('/quickSearch',adminHandler.quickSearch)
 
 // 智能分析接口
 adRouter.post('/analyInfo',adminHandler.analyInfo)

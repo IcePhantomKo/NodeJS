@@ -1,4 +1,6 @@
-ws = new WebSocket("ws://10.110.133.212:9100");
+// ws = new WebSocket("ws://10.110.133.212:9100");
+ws = new WebSocket("ws://172.20.10.2:9100");
+
 if (window.WebSocket) {
     var temp = new Array();
     var objS = new Array();
@@ -20,13 +22,8 @@ if (window.WebSocket) {
             // 发送
             this.ws.send(loginInfo);
 
-            // setInterval(()=>{
-            //     GetAlarm();
-            //     page1Info()
-            // },1000)
             page1Info()
             GetAlarm()
-            // plcStatus()
         }
 
         this.ws.onclose = (e) =>{
@@ -38,7 +35,7 @@ if (window.WebSocket) {
                 // console.log(e.data);
 
                 var obj = JSON.parse(e.data);
-                console.log(obj);
+                // console.log(obj);
                 switch(obj.Response){
                     // PLC & Switch 在线率 + 系统参数
                     case "RDB_GetTagFieldValue":
@@ -80,7 +77,6 @@ if (window.WebSocket) {
 
                                 // 网络拓扑图-plc状态
 
-                                // console.log('not same');
                             } else {
                                 // console.log('same');
                                 return;
@@ -140,29 +136,6 @@ if (window.WebSocket) {
     }
 
     //网络拓扑图-plc状体
-    function plcStatus(){
-        // ********************************* 拼接 *********************************************
-        var test = '';
-        for (i = 1; i < 23; i++) {
-            if (i <= 19) {
-                test += '"PLC1_stat' + i + '.F_CV",'
-            } else {
-                test += '"PLC1_stat' + i + '.A_CV",'
-            }
-        }
-        wsStr = '{ "Request":"RDB_GetTagFieldValue","TagFieldName":[' + test +']}'
-        // ************************************************************************************
-
-        // 标签点获取
-        // wsStr = '{\
-        //     "Request":"RDB_GetTagFieldValue",\
-        //     "TagFieldName":[\
-        //         "PLC1_online.F_CV","PLC2_online.F_CV","PLC3_online.F_CV","PLC4_online.F_CV","PLC5_online.F_CV",\
-        //         "PLC6_online.F_CV","PLC7_online.F_CV","PLC8_online.F_CV","PLC9_online.F_CV","PLC10_online.F_CV",\
-        //     ]\
-        // }'
-        ws.send(wsStr)
-    }
 
     // 执行连接
     connectServer();
