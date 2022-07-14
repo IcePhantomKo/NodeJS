@@ -25,11 +25,8 @@ function requestError(timeSpan) {
     })
 }
 
-// 进入系统请求一次故障率
-// setInterval(()=>{
-//     requestError();
-// },1000)
-requestError(errorList[2]);
+// 进入系统请求一次故障率查询七天内数据 
+requestError(errorList[0]);
 
 //故障率
 function errorOption(obj) {    

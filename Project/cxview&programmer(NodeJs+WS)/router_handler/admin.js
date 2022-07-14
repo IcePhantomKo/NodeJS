@@ -57,9 +57,6 @@ exports.errorRate = (req,res) =>{
             
             var eachValue = {};
             // 开始时间
-            if(typeof result2[0].DATE_SUB == 'undefined'){
-                result2[0].DATE_SUB = '0'
-            }
             var startdate = result2[0].DATE_SUB;
 
             // 时间列表
