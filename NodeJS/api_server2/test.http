@@ -1,11 +1,11 @@
-@url = http://localhost:3001/api
+@url = http://10.110.133.212:8000
 @json = Content-Type: application/json
 
 ###
 get {{url}}
 
 ### 注册
-post {{url}}/register
+post {{url}}/api/reguser
 {{json}}
 
 {
@@ -14,4 +14,18 @@ post {{url}}/register
 }
 
 ### 登录
-post {{url}}/login
+post {{url}}/api/login
+{{json}}
+
+{
+    "username": "admin",
+    "password": "000000"
+}
+
+###
+POST url HTTP/1.1
+{{json}}
+{
+    "username":"admin",
+    "password":"000000"
+}
