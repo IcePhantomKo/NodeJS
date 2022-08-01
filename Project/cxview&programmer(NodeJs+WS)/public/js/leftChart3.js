@@ -24,7 +24,8 @@ option3 = {
                 normal: {
                     show: true,
                     position: 'center',
-                    formatter:function (argument) {
+                    formatter:function () {
+                        
                         var html;
                         var value1 = option3.series[0].data[0].value;
                         var value2 = option3.series[0].data[1];
@@ -51,7 +52,7 @@ option3 = {
             },
             data: [
                 {value: 58, name: '正常运行数量',itemStyle:{color:'#4FA4D0'}},
-                {value: 10, name: '存在异常数量',itemStyle:{color:'red'}},
+                {value: 10, name: '存在异常数量',itemStyle:{color:'#FF0000'}},
             ]
         }
     ],

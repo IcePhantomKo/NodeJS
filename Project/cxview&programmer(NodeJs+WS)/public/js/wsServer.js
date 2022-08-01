@@ -61,11 +61,18 @@ if (window.WebSocket) {
                                 option2.series[0].data[2].percent = (10 - obj.TagFieldValue[6].V)/10
                                 
                                 myChart2.setOption(option2,true);
+                                myChart3.setOption(option3,true);
 
 
                                 // 交换机在线率
                                 $('#switchOnline').html(obj.TagFieldValue[1].V);
                                 $('#switchOffline').html((200 - obj.TagFieldValue[1].V));
+
+                                // 交换机在线个数
+                                // 需要实际ping交换机来获取个数
+                                // option3.series[0].data[0].value
+                                // console.log(obj.TagFieldValue);
+
                                 // 系统参数
                                 option4.series[0].data[0].value = obj.TagFieldValue[0].V;
                                 option4.series[1].data[0].value = obj.TagFieldValue[1].V;

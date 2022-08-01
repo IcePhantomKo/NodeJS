@@ -23,7 +23,6 @@ function alarmSearch(){
     }else{
     // 发送请求
         $.ajax({
-            // url: 'http://10.110.133.212:8000/admin/alarmRecord',
             url: my_ip + '/admin/alarmRecord',
             type: "post",
             contentType: "application/json",
@@ -54,7 +53,6 @@ function alarmSearch(){
                         value: result.message[i].AlarmValue
                     })
                 }
-
                 //动态创建table表格函数
                 function createTable(tableList, keyList, tbodyId) {
                     let str = '';

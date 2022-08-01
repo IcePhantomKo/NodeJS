@@ -108,6 +108,8 @@ function botNavChange(obj){
                 console.log(obj);
                 // 创建table
                 let tableData = new Array();
+                let plcValue = new Array();
+                
                 let keyData = [
                     'index','plcName','onlineStatus',
                     'stat1','stat2','stat3','stat4','stat5','stat6',
@@ -115,16 +117,22 @@ function botNavChange(obj){
                     'stat13','stat14','stat15','stat16','stat17','stat18',
                     'stat19','stat20','stat21'
                 ]
-                for(i=0;i<obj.TagFieldValue.length;i++){
+                for(i=0;i<22;i++){
+                    plcValue.push(obj.TagFieldValue[i].V)
+                }
+                console.log(plcValue[3]);
+                
+                for(i=0;i<10;i++){
                     tableData.push({
-                        // index: (i+1),
-                        // plcName: plcName[i],
-                        // onlineStatus: i,
-                        stat1: obj.TagFieldValue[i].V,
-                        stat2: obj.TagFieldValue[i].T
+                        index: i+1,
+                        plcName: plcName[i],
+                        onlineStatus: 1,
+                        plcStat1: obj.TagFieldValue[0].V,
+                        plcStat2: obj.TagFieldValue[1].V
                     })
                 }
-                console.log(tableData);
+
+                // console.log(tableData);
             }
             break;
             
