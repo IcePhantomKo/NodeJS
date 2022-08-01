@@ -3,7 +3,6 @@ var errorList = ['7','15','50']
 // 故障率请求方法
 function requestError(timeSpan) {
     $.ajax({
-        // url: 'http://10.110.133.212:8000/admin/errorRate',
         url: my_ip + '/admin/errorRate',
         type: "post",
         contentType: "application/json",

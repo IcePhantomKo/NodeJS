@@ -1,5 +1,5 @@
-// ws = new WebSocket("ws://10.110.133.212:9100");
-ws = new WebSocket("ws://172.20.10.2:9100");
+ws = new WebSocket("ws://10.110.133.212:9100");
+// ws = new WebSocket("ws://172.20.10.2:9100");
 
 if (window.WebSocket) {
     var temp = new Array();

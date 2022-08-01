@@ -36,10 +36,8 @@ exports.errorRate = (req,res) =>{
     // 数据库查询语句
     db.query(totalStr,totalInfo,(err,result1) =>{
         if(err) throw err
-
         db.query(eachStr,totalInfo,(err,result2) => {
             if(err) throw err
-
             // 日期格式转换 & 增加天数函数
             function dateAddDays(dataStr, dayCount) {  
                 var strdate = dataStr; //日期字符串    
@@ -54,35 +52,73 @@ exports.errorRate = (req,res) =>{
                 var pdate = isdate.getFullYear() + "-" + (new_month) + "-" + (new_date);   //把日期格式转换成字符串    
                 return pdate;  
             }
-            
+
             var eachValue = {};
             // 开始时间
-            var startdate = result2[0].DATE_SUB;
-
+            var startdate;
             // 时间列表
             var newDate = '';
             // 故障率列表
             var newData = [];
+            
+            // 判断
+            if(result1[0].COUNT > 0){
+                // TODO 
+                if(result2[0].COUNT > 0){      
+                    startdate = result2[0].DATE_SUB;
+                    
+                    for(i = 0; i < new_timespan; i++){
+                        newData.push('0');
+                        if(i != new_timespan - 1){
+                            newDate += dateAddDays(startdate,i) + ",";
+                        }else{
+                            newDate += dateAddDays(startdate,i);
+                        }
+                    }
 
-            for(i = 0; i < new_timespan; i++){
-                newData.push('0');
-                if(i != new_timespan - 1){
-                    newDate += dateAddDays(startdate,i) + ",";
+                    newDate = newDate.split(',');
+
+                    // 参数列表
+                    for(i=0;i<result2.length;i++){
+                        for(j=0;j<new_timespan;j++){
+                            if(result2[i].START_TIME == newDate[j]){
+                                newData.splice(j, 1, (result2[i].COUNT/result1[0].COUNT).toFixed(2)*100 + "")
+                            }else{
+                                // newData.splice(j,1,'0');
+                            }
+                        }
+                    }
+
                 }else{
-                    newDate += dateAddDays(startdate,i);
-                }
-            }
 
-            newDate = newDate.split(',');
-            // 参数列表
-            for(i=0;i<result2.length;i++){
-                for(j=0;j<new_timespan;j++){
-                    if(result2[i].START_TIME == newDate[j]){
-                        newData.splice(j, 1, (result2[i].COUNT/result1[0].COUNT).toFixed(2)*100 + "")
+                }
+            }else{
+                // 当前时间 - newspan的值
+                var myDate = new Date();
+                var year = myDate.getFullYear();
+                var month = myDate.getMonth() + 1;
+                var day = myDate.getDate();
+                
+                if(month < 10){
+                    month = '0' + month
+                }
+                if(day < 10){
+                    day = '0' + day
+                }
+
+                var curDate = curDate + '-' + month + '-' + day;
+
+                var startdate = dateAddDays(curDate,-new_timespan);
+
+                for(i = 0; i < new_timespan; i++){
+                    newData.push('0');
+                    if(i != new_timespan - 1){
+                        newDate += dateAddDays(startdate,i) + ",";
                     }else{
-                        // newData.splice(j,1,'0');
+                        newDate += dateAddDays(startdate,i);
                     }
                 }
+                newDate = newDate.split(',');
             }
             
             eachValue = 

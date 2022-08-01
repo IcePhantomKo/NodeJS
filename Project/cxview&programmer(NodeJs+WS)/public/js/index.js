@@ -1,5 +1,9 @@
-const my_ip = 'http://172.20.10.2:8000'
+const my_ip = 'http://10.110.133.212:8000'
 
+const plcName = [
+    '金资隧道plc1','金资隧道plc2','金资隧道plc3','金资隧道plc4','金资隧道plc5',
+    '金资隧道plc6','金资隧道plc7','金资隧道plc8','金资隧道plc9','金资隧道plc10',
+]
 // 底部导航栏
 function botNavChange(obj){
     var imgList = new Array();
@@ -101,7 +105,26 @@ function botNavChange(obj){
 
             ws.onmessage = (e) =>{
                 var obj = JSON.parse(e.data);
-                console.log(obj);                            
+                console.log(obj);
+                // 创建table
+                let tableData = new Array();
+                let keyData = [
+                    'index','plcName','onlineStatus',
+                    'stat1','stat2','stat3','stat4','stat5','stat6',
+                    'stat7','stat8','stat9','stat10','stat11','stat12',
+                    'stat13','stat14','stat15','stat16','stat17','stat18',
+                    'stat19','stat20','stat21'
+                ]
+                for(i=0;i<obj.TagFieldValue.length;i++){
+                    tableData.push({
+                        // index: (i+1),
+                        // plcName: plcName[i],
+                        // onlineStatus: i,
+                        stat1: obj.TagFieldValue[i].V,
+                        stat2: obj.TagFieldValue[i].T
+                    })
+                }
+                console.log(tableData);
             }
             break;
             
