@@ -13,9 +13,9 @@
                     <el-form-item label="用户名" prop="name">
                         <el-input v-model="registerUser.name" placeholder="请输入用户名"></el-input>
                     </el-form-item>
-                    <el-form-item label="邮箱" prop="email">
+                    <!-- <el-form-item label="邮箱" prop="email">
                         <el-input v-model="registerUser.email" placeholder="请输入email"></el-input>
-                    </el-form-item>
+                    </el-form-item> -->
                     <el-form-item label="密码" prop="password">
                         <el-input type="password" v-model="registerUser.password" placeholder="请输入密码"></el-input>
                     </el-form-item>
@@ -118,7 +118,15 @@
             submitForm(formName){
                 this.$refs[formName].validate(valid => {
                     if(valid){
-                        alert('submit');
+                        this.$axios.post('http://10.110.133.212:8000/api/reguser', this.registerUser)
+                        .then(res => {
+                            // 注册成功
+                            this.$message({
+                                message:'账号注册成功!',
+                                type:'success'
+                            });
+                        })
+                        this.$router.push('/login')
                     }else{
                         console.log('error submit!!');
                         return false;
