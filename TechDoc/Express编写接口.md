@@ -1,6 +1,6 @@
-# 使用 Express 写接口
+## 使用 Express 写接口
 
-## 1.1 创建 API 路由模块
+### 1.1 创建 API 路由模块
 
 ```
 // api.Router.js 【路由模块】
@@ -15,8 +15,8 @@ module.exports = apiRouter
 const apiRouter = require('./apiRouter.js')
 app.use('/api',apiRouter)
 ```
-## 1.2 编写 GET 接口
-app.js
+### 1.2 编写 GET 接口
+#### app.js
 
 ```
 const express = require('express')
@@ -31,7 +31,7 @@ app.listen(8000,() => {
     console.log('http://127.0.0.1');
 })
 ```
-apiRouter.js
+#### apiRouter.js
 
 ```
 // api.Router.js 【路由模块】
@@ -50,7 +50,7 @@ router.get('/get',(req,res) =>{
 })
 module.exports = router
 ```
-Postman GET请求
+#### Postman GET请求
 
 ```
 http://127.0.0.1:8000/api/get?name=zs&age=22&gender=male
@@ -67,7 +67,7 @@ http://127.0.0.1:8000/api/get?name=zs&age=22&gender=male
 }
 
 ## 1.3 编写 POST 接口
-app.js
+#### app.js
 
 ```
 const express = require('express')
@@ -85,7 +85,7 @@ app.listen(8000,() =>{
 })
 ```
 
-apiRouter.js
+#### apiRouter.js
 
 ```
 const express = require('express')
