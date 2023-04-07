@@ -102,7 +102,7 @@ server.listen(8000,()=>{
 })
 ```
 ### 初识 Express
-建立 get / post 请求
+##### 建立 get / post 请求
 
 ```
 const express = require('express')
@@ -125,7 +125,7 @@ app.listen(8000,()=>{
     console.log('http://127.0.0.1');
 })
 ```
-查询参数
+##### 查询参数
 
 ```
 app.get('/',(req,res) =>{
@@ -145,7 +145,7 @@ http://localhost:8000/?name=zs&age=13
 }
 ```
 
-动态参数
+##### 动态参数
 
 ```
 app.get('/user/:id',(req,res)=>{
@@ -188,8 +188,8 @@ app.get('/',function(req,res)=>{
     res.send('Hello World!')
 })
 ```
-##### 模块化路由
-###### 注册路由
+#### 模块化路由
+##### 注册路由
 ```
 // 1. 导入express
 const express = require('express')
@@ -205,7 +205,7 @@ router.post('/user/add',(req,res)=>{
 // 4. 向外导出路由对象
 module.exports = router
 ```
-###### 使用路由
+##### 使用路由
 
 ```
 const express = require('express')
@@ -232,9 +232,9 @@ app.get('/',function(req,res,next){
 app.listen(3000)
 ```
 
-###### next函数的作用
+##### next函数的作用
 
-**next函数**是实现多个中间件连续调用的关键，它表示把流转关系转交给下一个 **中间件** 或 **路由**
+**next函数 ** 是实现多个中间件连续调用的关键，它表示把流转关系转交给下一个 **中间件** 或 **路由**
 
 客户端 -> 请求 -> 中间件（1） next() -> 中间件（2） next() -> 处理完毕，响应这次请求 -> 响应 -> 客户端
 
@@ -262,8 +262,8 @@ app.get('/user',(req,res) =>{
 app.listen(8000,()=>{
     console.log('http://127.0.0.1');
 })
-``` 
-简化版的中间件
+```
+##### 简化版的中间件
 
 ```
 app.use((req,res,next) =>{
@@ -271,7 +271,7 @@ app.use((req,res,next) =>{
     next();
 })
 ```
-###### 中间件的作用
+##### 中间件的作用
 多个中间件之间，共享同一分 req 和 res。基于这样的特性，我们可以在上游的中间件中，统一为 req 或 res 对象添加自定义的属性或者方法，供下游的中间件或路由进行使用。
 
 ```
@@ -297,7 +297,7 @@ app.listen(8000,()=>{
     console.log('http://127.0.0.1');
 })
 ```
-###### 局部使用中间件
+##### 局部使用中间件
 
 ```
 const express = require('express')
@@ -334,9 +334,7 @@ app.listen(8000,()=>{
 ```
 
 ### nodemon
-无需每次启动node index.js，通过nodemon index.js 来自动启动node
+无需每次启动`node index.js`，通过`nodemon index.js` 来自动启动node
 安装 nodemon
 
-```
-npm install -g nodemon
-```
+`npm install -g nodemon`
